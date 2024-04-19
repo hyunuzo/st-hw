@@ -44,15 +44,13 @@ df = pd.DataFrame(row_list, columns=name_list)
 ### 데이터 가공
 today = datetime.now().date().strftime("%Y-%m-%d")
 
-
-
-df1 = df[df['fstvlstartdate'] >= '2024-04-18']
+# df1 = df[df['fstvlstartdate'] >= '2024-04-18']
 
 # 축제 수 카운트
 count =len(df)
 
 # 컬럼명 한글화
-output = df1.rename(columns={'fstvlnm' : '축제명', 
+df1 = df.rename(columns={'fstvlnm' : '축제명', 
 'opar' : '개최장소', 
 'fstvlstartdate' : '축제시작일자', 
 'fstvlenddate' : '축제종료일자', 
@@ -78,4 +76,12 @@ st.set_page_config(layout="wide")
 
 st.subheader("🎈🎪전국 문화축제 리스트🎡🎠")
 st.metric(label="총 축제 수", value= count )
+fstvlstd = st.date_input("축제 시작일",value=None )
+st.write(fstvlstd)
+
+if fstvlstd == None:
+    output = df1
+else :
+    output = df1[df1['축제시작일자'] >= str(fstvlstd)]
+
 st.data_editor(output,column_config={"홈페이지주소" : st.column_config.LinkColumn()})
