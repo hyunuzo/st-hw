@@ -3,5 +3,5 @@ numpy
 pandas
 pydeck
 streamlit
-beautifulsoup
 bs4
+beautifulsoup4==4.10.0
