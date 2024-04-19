@@ -78,4 +78,4 @@ st.set_page_config(layout="wide")
 
 st.subheader("🎈🎪전국 문화축제 리스트🎡🎠")
 st.metric(label="총 축제 수", value= count )
-st.data_editor(output,column_config={"homepageurl" : st.column_config.LinkColumn()})
+st.data_editor(output,column_config={"홈페이지주소" : st.column_config.LinkColumn()})
