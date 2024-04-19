@@ -25,7 +25,7 @@ def run():
     )
 
     st.write("# 전국문화축제 조회")
-    st.image('/img/fest_img.jpg')
+    st.image('img/fest_img.jpg')
 
     st.markdown(
         """
