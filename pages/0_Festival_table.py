@@ -41,4 +41,7 @@ df = pd.DataFrame(row_list, columns=name_list)
 df1 = df[df['fstvlstartdate'] >= '2024-04-18']
 
 
+st.set_page_config(layout="wide")
+
+
 st.data_editor(df1,column_config={"homepageUrl" : st.column_config.LinkColumn()})
