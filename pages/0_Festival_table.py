@@ -13,7 +13,7 @@ response = requests.get(url, params=params)
 content = response.content
 
 
-xml_obj = BeautifulSoup(content,'lxml-xml')
+xml_obj = BeautifulSoup(content,'lxml')
 rows = xml_obj.findAll('item')
 
 # 각 행의 컬럼, 이름, 값을 가지는 리스트 만들기
