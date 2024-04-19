@@ -25,13 +25,14 @@ def run():
     )
 
     st.write("# 전국문화축제 조회")
-    st.image('img/fest_img.jpg')
+  
 
     st.markdown(
         """
         데이터 제공 : 한국관광공사, 지방자치단체
     """
     )
+      st.image('img/fest_img.jpg')
 
 
 if __name__ == "__main__":
