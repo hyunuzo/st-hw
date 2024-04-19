@@ -39,9 +39,10 @@ for i in range(0, len(rows)):
 df = pd.DataFrame(row_list, columns=name_list)
 
 df1 = df[df['fstvlstartdate'] >= '2024-04-18']
-
+count =len(df1)
 
 st.set_page_config(layout="wide")
 
-
+st.subheader("전국 문화축제 리스트")
+st.metric(label="축제 수", value= count )
 st.data_editor(df1,column_config={"homepageurl" : st.column_config.LinkColumn()})
