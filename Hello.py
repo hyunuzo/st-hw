@@ -20,13 +20,12 @@ LOGGER = get_logger(__name__)
 
 def run():
     st.set_page_config(
-        page_title="streamlit 페이지",
+        page_title="전국문화축제",
         page_icon="👋",
     )
 
-    st.write("# Welcome to Streamlit! 👋")
-
-    st.sidebar.success("Select a demo above.")
+    st.write("# 전국문화축제 조회")
+    st.image('/img/
 
     st.markdown(
         """
