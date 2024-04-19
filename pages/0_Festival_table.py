@@ -49,7 +49,7 @@ today = datetime.now().date().strftime("%Y-%m-%d")
 df1 = df[df['fstvlstartdate'] >= '2024-04-18']
 
 # 축제 수 카운트
-count =len(df1)
+count =len(df)
 
 # 컬럼명 한글화
 output = df1.rename(columns={'fstvlnm' : '축제명', 
@@ -77,5 +77,5 @@ output = df1.rename(columns={'fstvlnm' : '축제명',
 st.set_page_config(layout="wide")
 
 st.subheader("🎈🎪전국 문화축제 리스트🎡🎠")
-st.metric(label="축제 수", value= count )
+st.metric(label="총 축제 수", value= count )
 st.data_editor(output,column_config={"homepageurl" : st.column_config.LinkColumn()})
