@@ -107,4 +107,4 @@ with col2:
 with col3:
     st.metric(label="검색된 축제 수", value= count1)
 
-st.data_editor(filter_df,column_config={"홈페이지주소" : st.column_config.LinkColumn()})
+st.data_editor(filter_df.sort_values(by=['축제시작일자','축제종료일자']),height=1500,column_config={"홈페이지주소" : st.column_config.LinkColumn()})
