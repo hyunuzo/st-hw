@@ -108,5 +108,3 @@ with col3:
     st.metric(label="검색된 축제 수", value= count1)
 
 st.data_editor(filter_df,column_config={"홈페이지주소" : st.column_config.LinkColumn()})
-st.write(place)
-st.write(fstvlsttd)
