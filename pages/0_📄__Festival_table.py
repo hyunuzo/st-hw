@@ -7,40 +7,39 @@ from datetime import datetime
 
 ### API 호출(공공데이터포털)
 svkey = "JBgfMOzc2H1AraeZJkFTdGrDkfJJ4mOEyAU1/iWxTbQJI043Vgf0m0WA6vxUJXVzrzsSXFmPuDr3/7pmbjR/1w=="
-
 url = 'http://api.data.go.kr/openapi/tn_pubr_public_cltur_fstvl_api'
 params = {'serviceKey' : svkey, 'type' : 'xml', 'numOfRows' : '99999'}
 
-response = requests.get(url, params=params)
+st.set_page_config(layout="wide")
 
-content = response.content
+st.cacahe_data
+def api_data():
+    response = requests.get(url, params=params)
+    content = response.content
+    xml_obj = BeautifulSoup(content,'lxml')
+    rows = xml_obj.findAll('item')
+    # 각 행의 컬럼, 이름, 값을 가지는 리스트 만들기
+    row_list = [] # 행값
+    name_list = [] # 열이름값
+    value_list = [] #데이터값
+    # xml 안의 데이터 수집
+    for i in range(0, len(rows)):
+        columns = rows[i].find_all()
+        #첫째 행 데이터 수집
+        for j in range(0,len(columns)):
+            if i ==0:
+                # 컬럼 이름 값 저장
+                name_list.append(columns[j].name)
+            # 컬럼의 각 데이터 값 저장
+            value_list.append(columns[j].text)
+        # 각 행의 value값 전체 저장
+        row_list.append(value_list)
+        # 데이터 리스트 값 초기화
+        value_list=[]
+    data = pd.DataFrame(row_list, columns=name_list)
+return data
 
-
-xml_obj = BeautifulSoup(content,'lxml')
-rows = xml_obj.findAll('item')
-
-# 각 행의 컬럼, 이름, 값을 가지는 리스트 만들기
-row_list = [] # 행값
-name_list = [] # 열이름값
-value_list = [] #데이터값
-
-# xml 안의 데이터 수집
-for i in range(0, len(rows)):
-    columns = rows[i].find_all()
-    #첫째 행 데이터 수집
-    for j in range(0,len(columns)):
-        if i ==0:
-            # 컬럼 이름 값 저장
-            name_list.append(columns[j].name)
-        # 컬럼의 각 데이터 값 저장
-        value_list.append(columns[j].text)
-    # 각 행의 value값 전체 저장
-    row_list.append(value_list)
-    # 데이터 리스트 값 초기화
-    value_list=[]
-
-df = pd.DataFrame(row_list, columns=name_list)
-
+df = api.data()
 ### 데이터 가공
 df.loc[df['lnmadr']=='','lnmadr'] = df['rdnmadr'] # 도로명/지번 주소 중 1가지만 있는 경우가 있어 지번기준 공란일시 도로명주소로 채움
 
@@ -74,7 +73,7 @@ count =len(df)
 
 #### 화면 출력
 
-st.set_page_config(layout="wide")
+
 st.sidebar.subheader("🔍축제 검색")
 with st.sidebar.form(key='search_form'):
     place = st.selectbox("지역",['서울특별시','부산광역시','대구광역시','인천광역시','광주광역시','대전광역시','울산광역시','세종특별자치시','경기도','강원도','충청북도','충청남도','전라북도','전라남도','경상북도','경상남도','제주특별자치도'],index=None)
