@@ -12,7 +12,7 @@ params = {'serviceKey' : svkey, 'type' : 'xml', 'numOfRows' : '99999'}
 
 st.set_page_config(layout="wide")
 
-@st.cacahe_data
+@st.cacahe
 def api_data():
     response = requests.get(url, params=params)
     content = response.content
