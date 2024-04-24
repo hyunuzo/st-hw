@@ -39,7 +39,7 @@ def api_data():
     data = pd.DataFrame(row_list, columns=name_list)
     return data
 
-df = api.data()
+df = api_data()
 ### 데이터 가공
 df.loc[df['lnmadr']=='','lnmadr'] = df['rdnmadr'] # 도로명/지번 주소 중 1가지만 있는 경우가 있어 지번기준 공란일시 도로명주소로 채움
 
