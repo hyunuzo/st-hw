@@ -45,8 +45,6 @@ def api_data():
 def marker(dataframe,zoom_lv):
             lat_mean = dataframe.loc[dataframe['위도'] !=0,'위도'].mean()
             lon_mean = dataframe.loc[dataframe['경도'] !=0,'경도'].mean()
-            m = folium.Map(location= [lat_mean,lon_mean], zoom_start= zoom_lv)
-            # folium.TileLayer('cartodbpositron').add_to(m)
             fstvlnm = dataframe['축제명']
             opar = dataframe['개최장소']
             fstvlstartdate = dataframe['축제시작일자']
@@ -55,6 +53,7 @@ def marker(dataframe,zoom_lv):
             lon = dataframe['경도']
             location = [lat, lon]
             m = folium.Map(location= [lat_mean,lon_mean], zoom_start= zoom_lv)
+            folium.TileLayer('cartodbpositron').add_to(m)
             for i in dataframe.index:
                 folium.Marker(
                     [lat[i],lon[i]],
