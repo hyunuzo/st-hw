@@ -154,5 +154,5 @@ with col3:
 st.empty()
 with st.spinner():
     st_map = folium_static(mk, width = 1300, height=500)
-    st.data_editor(filter_df.sort_values(by=['축제시작일자','축제종료일자']),height=1500,column_order=("위도","경도","축제명","개최장소","소재지주소","축제시작일자","축제종료일자","축제내용","주관기관명","주최기관명","전화번호","홈페이지주소","관련정보"),column_config={"홈페이지주소" : st.column_config.LinkColumn()})
+    st.data_editor(filter_df.sort_values(by=['축제시작일자','축제종료일자']),height=1500,column_order=("축제명","개최장소","소재지주소","축제시작일자","축제종료일자","축제내용","주관기관명","주최기관명","전화번호","홈페이지주소","관련정보"),column_config={"홈페이지주소" : st.column_config.LinkColumn()})
 
