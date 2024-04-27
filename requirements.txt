@@ -10,4 +10,3 @@ folium
 streamlit_folium
 telegram
 asyncio
-telegram.ext
