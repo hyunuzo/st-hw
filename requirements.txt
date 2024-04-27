@@ -8,3 +8,5 @@ beautifulsoup4==4.10.0
 lxml
 folium
 streamlit_folium
+telegram
+asyncio
