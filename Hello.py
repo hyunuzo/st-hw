@@ -16,9 +16,6 @@ import streamlit as st
 from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
-CHAT_ID = '5506745859'
-TELE_TOKEN = '6438318825:AAE9HGapmTQ853woseydqfunNnMak0RRNs0'
-NOW_TIME = datetime.now().time()
 
 def run():
     st.set_page_config(
