@@ -120,7 +120,7 @@ with st.sidebar.form(key='search_form'):
             if fstvlsttd is not None:
                 filter_df = df1[(df1['소재지주소'].str.contains(place))&(df1['축제시작일자'] >= str(fstvlsttd))]
                 if filter_df == None:
-                    st.write("축제가 없습니다.")
+                    mk = None
                 else:
                     zoom_lv = 9
                     mk = marker(filter_df,zoom_lv)
