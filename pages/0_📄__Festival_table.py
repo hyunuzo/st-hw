@@ -119,11 +119,8 @@ with st.sidebar.form(key='search_form'):
         if place is not None:
             if fstvlsttd is not None:
                 filter_df = df1[(df1['소재지주소'].str.contains(place))&(df1['축제시작일자'] >= str(fstvlsttd))]
-                if filter_df is None:
-                    mk = None
-                else:
-                    zoom_lv = 9
-                    mk = marker(filter_df,zoom_lv)
+                zoom_lv = 9
+                mk = marker(filter_df,zoom_lv)
             else:
                 filter_df = df1[df1['소재지주소'].str.contains(place)]
                 zoom_lv = 9
