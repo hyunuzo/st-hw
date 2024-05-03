@@ -8,16 +8,17 @@ from streamlit_folium import folium_static
 import folium
 from folium import plugins
 
-### API 호출(공공데이터포털)
+### 오픈API  #전국문화축제표준데이터(공공데이터포털)
 svkey = "JBgfMOzc2H1AraeZJkFTdGrDkfJJ4mOEyAU1/iWxTbQJI043Vgf0m0WA6vxUJXVzrzsSXFmPuDr3/7pmbjR/1w=="
-url = 'http://api.data.go.kr/openapi/tn_pubr_public_cltur_fstvl_api'
-params = {'serviceKey' : svkey, 'type' : 'xml', 'numOfRows' : '99999'}
+url1 = 'http://api.data.go.kr/openapi/tn_pubr_public_cltur_fstvl_api'
+url2 = 'http://api.data.go.kr/openapi/tn_pubr_public_pblprfr_event_info_api'
+
 
 st.set_page_config(layout="wide")
 
 @st.cache_data
-def api_data():    
-    response = requests.get(url, params=params)
+def api_data(url):    
+    response = requests.get(url, params={'serviceKey' : svkey, 'type' : 'xml', 'numOfRows' : '99999'})
     content = response.content
     xml_obj = BeautifulSoup(content,'lxml')
     rows = xml_obj.findAll('item')
@@ -68,8 +69,10 @@ def marker(dataframe,zoom_lv):
             return m
 
 
-with st.spinner("잠시만 기다려주세요..."):
-    df = api_data()
+df_fest = api_data(url1)
+df_event = api_data(url2)
+df = pd.merge([df_fest, df_event])
+
 
 ### 데이터 가공
 df.loc[df['lnmadr']=='','lnmadr'] = df['rdnmadr'] # 도로명/지번 주소 중 1가지만 있는 경우가 있어 지번기준 공란일시 도로명주소로 채움
