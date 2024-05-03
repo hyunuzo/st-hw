@@ -69,9 +69,9 @@ def marker(dataframe,zoom_lv):
             return m
 
 
-df_fest = api_data(url1)
-df_event = api_data(url2)
-df = pd.merge([df_fest, df_event])
+df = api_data(url1)
+# df_event = api_data(url2)
+# df = pd.merge([df_fest, df_event])
 
 
 ### 데이터 가공
