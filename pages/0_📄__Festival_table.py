@@ -8,7 +8,7 @@ from streamlit_folium import folium_static
 import folium
 from folium import plugins
 
-### 오픈API  #전국문화축제표준데이터(공공데이터포털)
+### 오픈API(공공데이터포털)  #  url1 . 전국문화축제표준데이터 url2 . 전국공연행사정보표준데이터
 svkey = "JBgfMOzc2H1AraeZJkFTdGrDkfJJ4mOEyAU1/iWxTbQJI043Vgf0m0WA6vxUJXVzrzsSXFmPuDr3/7pmbjR/1w=="
 url1 = 'http://api.data.go.kr/openapi/tn_pubr_public_cltur_fstvl_api'
 url2 = 'http://api.data.go.kr/openapi/tn_pubr_public_pblprfr_event_info_api'
@@ -68,10 +68,15 @@ def marker(dataframe,zoom_lv):
                             ).add_to(m)
             return m
 
+# 데이터 불러오기 
+df_fest_raw = api_data(url1)
+df_event_raw = api_data(url2)
 
-df = api_data(url1)
-# df_event = api_data(url2)
-# df = pd.merge([df_fest, df_event])
+# 필요한 컬럼만
+df_fest = df_fest_raw[['fstvlNm', 'opar', 'fstvlStartDate', 'fstvlEndDate', 'fstvlCo', 'mnnstNm', 'auspcInsttNm', 'suprtInsttNm', 'phoneNumber', 'homepageUrl', 'rdnmadr', 'lnmadr', 'latitude', 'longitude']]
+df_event = df_event_raw[['eventNm', 'opar', 'eventStartDate', 'eventEndDate', 'eventCo', 'mnnstNm', 'auspcInsttNm', 'suprtInsttNm', 'phoneNumber', 'homepageUrl', 'rdnmadr', 'lnmadr', 'latitude', 'longitude']]
+
+df = pd.merge([df_fest, df_event])
 
 
 ### 데이터 가공
