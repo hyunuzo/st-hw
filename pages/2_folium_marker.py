@@ -54,7 +54,7 @@ st_map = folium_static(m, width = 1100, height=500)
 #     # Can be used wherever a "file-like" object is accepted:
 #     dataframe = pd.read_csv(uploaded_file)
 #     st.write(dataframe)
-submit_button = st.form_submit_button(label='조회')
+submit_button = st.submit_button(label='조회')
 
 if submit_button:
     bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
