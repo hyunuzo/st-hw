@@ -5,7 +5,7 @@ from folium.plugins import Draw
 from streamlit_folium import st_folium
 from io import StringIO
 
-path_csv = 'img/국토교통부_전국 버스정류장 위치정보_20231016.csv'
+path_csv = 'img/국토교통부_전국 버스정류장 위치정보1_20231016.csv'
 bus_stop = pd.read_csv(path_csv,encoding = 'ANSI')
 
 st.set_page_config(layout="wide")
