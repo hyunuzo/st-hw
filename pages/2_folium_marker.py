@@ -41,7 +41,9 @@ geo_str = json.load(open(path_geo,encoding='utf-8'))
 m1 = folium.Map(location=[35.176934,129.178065], zoom_start=6)
 
 # st_map = folium_static(m, width = 1100, height=500)
-bs_poly = []
+
+df_bs_poly = None
+
 
 with st.sidebar.form(key='search_form'):
     submit_button = st.form_submit_button(label='조회')
