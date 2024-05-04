@@ -18,11 +18,11 @@ bus_stop = pd.read_csv(path_csv)
 geometry = [Point(xy) for xy in zip(bus_stop['경도'],bus_stop['위도'])]
 gdf_bs = gpd.GeoDataFrame(bus_stop,geometry=geometry,crs='epsg:4326')
 gdf = gpd.read_file(path_geo)
-
+geo_str = json.load(open(path_geo,encoding='utf-8'))
 
 st.set_page_config(layout="wide")
 
-# uploaded_file = st.file_uploader("Choose a file")
+
 
 # st.write(uploaded_file.getvalue())
 # st.write(StringIO(uploaded_file.getvalue().decode("utf-8")))
@@ -33,6 +33,7 @@ st.set_page_config(layout="wide")
 # else:
 #     st.write("폴리곤 파일을 업로드해주세요.")
 
+gdf = gpd.read_file(path_geo)
 geo_str = json.load(open(path_geo,encoding='utf-8'))
 m = folium.Map(location=[35.176934,129.178065], zoom_start=6)
 folium.Choropleth(    geo_data = geo_str).add_to(m)
@@ -40,6 +41,26 @@ folium.Choropleth(    geo_data = geo_str).add_to(m)
 m1 = folium.Map(location=[35.176934,129.178065], zoom_start=6)
 
 st_map = folium_static(m, width = 1100, height=500)
+
+with st.sidebar.form(key='search_form'):
+    uploaded_file = st.file_uploader("Choose a file")
+    gdf = gpd.read_file(uploaded_file)
+    submit_button = st.form_submit_button(label='조회')
+    if submit_button:
+        bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
+        m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
+        for idx, row in bs_poly.iterrows():
+            popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
+            folium.Marker(location=[row.geometry.y, row.geometry.x],popup=popup).add_to(m1)
+    else:
+        st.write("hello")
+
+
+
+
+
+
+st_m = folium_static(m1, width=1000, height=500)
 
 #     # To read file as bytes:
 #     bytes_data = uploaded_file.getvalue()
@@ -57,15 +78,3 @@ st_map = folium_static(m, width = 1100, height=500)
 #     dataframe = pd.read_csv(uploaded_file)
 #     st.write(dataframe)
 
-with st.sidebar.form(key='search_form'):
-    submit_button = st.form_submit_button(label='조회')
-    if submit_button:
-        bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
-        m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
-        for idx, row in bs_poly.iterrows():
-            popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
-            folium.Marker(location=[row.geometry.y, row.geometry.x],popup=popup).add_to(m1)
-    else:
-        st.write("hello")
-
-st_m = folium_static(m1, width=1000, height=500)
