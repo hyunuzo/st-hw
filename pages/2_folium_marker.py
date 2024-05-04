@@ -18,7 +18,7 @@ gdf_bs = gpd.GeoDataFrame(bus_stop,geometry=geometry,crs='epsg:4326')
 st.set_page_config(layout="wide")
 
 uploaded_file = st.file_uploader("Choose a file")
-submit_button = st.form_submit_button(label='조회')
+
 st.write(uploaded_file.getvalue())
 st.write(StringIO(uploaded_file.getvalue().decode("utf-8")))
 
@@ -42,7 +42,7 @@ else:
 #     # Can be used wherever a "file-like" object is accepted:
 #     dataframe = pd.read_csv(uploaded_file)
 #     st.write(dataframe)
-
+submit_button = st.form_submit_button(label='조회')
 
 if submit_button:
     bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
