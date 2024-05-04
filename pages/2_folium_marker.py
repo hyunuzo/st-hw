@@ -50,7 +50,7 @@ with st.sidebar.form(key='search_form'):
     uploaded_file = st.file_uploader("폴리곤파일(.geojson)을 업로드해주세요.")
     if uploaded_file is not None:
         gdf = gpd.read_file(uploaded_file)
-        jsonData = json.loads(open(uploaded_file,encoding='utf-8'))
+        jsonData = json.loads(open(uploaded_file,encoding='utf-8').read())
         if submit_button:
             bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
             df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
