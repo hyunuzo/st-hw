@@ -12,7 +12,8 @@ m = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
 Draw(export=True).add_to(m)
 
 uploaded_file = st.file_uploader("Choose a file")
-st.write(uploaded_file)
+st.write(uploaded_file.getvalue())
+st.write(StringIO(uploaded_file.getvalue().decode("utf-8")))
 
 # if uploaded_file is not None:
 #     # To read file as bytes:
