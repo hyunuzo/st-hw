@@ -62,7 +62,7 @@ with st.sidebar.form(key='search_form'):
 
 
 st_m = folium_static(m1, width=1000, height=500)
-st.dataframe(bs_poly)
+st.write(bs_poly)
 
 
 #     # To read file as bytes:
