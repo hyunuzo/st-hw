@@ -35,8 +35,8 @@ st.set_page_config(layout="wide")
 
 gdf = gpd.read_file(path_geo)
 geo_str = json.load(open(path_geo,encoding='utf-8'))
-m = folium.Map(location=[35.176934,129.178065], zoom_start=6)
-folium.Choropleth(    geo_data = geo_str).add_to(m)
+# m = folium.Map(location=[35.176934,129.178065], zoom_start=6)
+# folium.Choropleth(    geo_data = geo_str).add_to(m)
 
 m1 = folium.Map(location=[35.176934,129.178065], zoom_start=6)
 
