@@ -54,14 +54,15 @@ st_map = folium_static(m, width = 1100, height=500)
 #     # Can be used wherever a "file-like" object is accepted:
 #     dataframe = pd.read_csv(uploaded_file)
 #     st.write(dataframe)
-submit_button = st.form_submit_button(label='조회')
 
-if submit_button:
-    bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
-    m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
-    for idx, row in bs_poly.iterrows():
-        popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
-        folium.Marker(location=[row.geometry.y, row.geometry.x],popup=popup).add_to(m1)
-    st_m = folium_static(m1, width=1000, height=500)
-else:
-    st.write("hello")
+with st.sidebar.form(key='search_form'):
+    submit_button = st.form_submit_button(label='조회')
+    if submit_button:
+        bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
+        m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
+        for idx, row in bs_poly.iterrows():
+            popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
+            folium.Marker(location=[row.geometry.y, row.geometry.x],popup=popup).add_to(m1)
+        st_m = folium_static(m1, width=1000, height=500)
+    else:
+        st.write("hello")
