@@ -7,7 +7,7 @@ from streamlit_folium import st_folium
 m = folium.Map(location=[35.162943, 129.053097], zoom_start=5)
 Draw(export=True).add_to(m)
 
-c1, c2 = st.columns(7,3)
+c1, c2 = st.columns([7,3])
 with c1:
     output = st_folium(m, width=700, height=500)
 
