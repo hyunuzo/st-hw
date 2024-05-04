@@ -44,14 +44,15 @@ st_map = folium_static(m, width = 1100, height=500)
 
 with st.sidebar.form(key='search_form'):
     submit_button = st.form_submit_button(label='조회')
-    uploaded_file = st.file_uploader("Choose a file")
-    gdf = gpd.read_file(uploaded_file)
-    if submit_button:
-        bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
-        m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
-        for idx, row in bs_poly.iterrows():
-            popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
-            folium.Marker(location=[row.geometry.y, row.geometry.x],popup=popup).add_to(m1)
+    uploaded_file = st.file_uploader("폴리곤파일(.geojson)을 업로드해주세요.")
+    if uploaded_file is not None:
+        gdf = gpd.read_file(uploaded_file)
+        if submit_button:
+            bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
+            m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
+            for idx, row in bs_poly.iterrows():
+                popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
+                folium.Marker(location=[row.geometry.y, row.geometry.x],popup=popup).add_to(m1)
     else:
         st.write("hello")
 
