@@ -62,4 +62,6 @@ if submit_button:
     for idx, row in bs_poly.iterrows():
         popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
         folium.Marker(location=[row.geometry.y, row.geometry.x],popup=popup).add_to(m1)
-    st_folium(m1, width=1000, height=500)
+    st_m = folium_static(m1, width=1000, height=500)
+else:
+    st.write("hello")
