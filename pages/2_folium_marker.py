@@ -69,7 +69,7 @@ st_m = folium_static(m1, width=1000, height=500)
 if df_bs_poly is not None:
     st.write(df_bs_poly)
 else:
-    st.write("테이블")
+    st.write("조회시 테이블이 표시됩니다.")
 
 
 #     # To read file as bytes:
