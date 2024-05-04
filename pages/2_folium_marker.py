@@ -43,9 +43,9 @@ m1 = folium.Map(location=[35.176934,129.178065], zoom_start=6)
 st_map = folium_static(m, width = 1100, height=500)
 
 with st.sidebar.form(key='search_form'):
+    submit_button = st.form_submit_button(label='조회')
     uploaded_file = st.file_uploader("Choose a file")
     gdf = gpd.read_file(uploaded_file)
-    submit_button = st.form_submit_button(label='조회')
     if submit_button:
         bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
         m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
