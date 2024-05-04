@@ -62,7 +62,10 @@ with st.sidebar.form(key='search_form'):
 
 
 st_m = folium_static(m1, width=1000, height=500)
-st.table(bs_poly)
+if bs_poly is not None:
+    st.table(bs_poly)
+else:
+    st.write("테이블")
 
 
 #     # To read file as bytes:
