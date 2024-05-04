@@ -64,7 +64,7 @@ with st.sidebar.form(key='search_form'):
 
 st_m = folium_static(m1, width=1000, height=500)
 if bs_poly is not None:
-    st.write(bs_poly)
+    st.write(pd.DataFrame(bs_poly.drop(columns='geometry')))
 else:
     st.write("테이블")
 
