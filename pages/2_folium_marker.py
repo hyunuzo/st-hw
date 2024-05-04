@@ -50,12 +50,11 @@ with st.sidebar.form(key='search_form'):
     uploaded_file = st.file_uploader("폴리곤파일(.geojson)을 업로드해주세요.")
     if uploaded_file is not None:
         gdf = gpd.read_file(uploaded_file)
-        jsonData = json.loads(open(uploaded_file,encoding='utf-8').read())
         if submit_button:
             bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
             df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
             m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=13)
-            folium.GeoJson(jsonData).add_to(m1)
+            folium.GeoJson(gdf.geometry.y).add_to(m1)
             for idx, row in bs_poly.iterrows():
                 popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
