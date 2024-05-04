@@ -64,7 +64,7 @@ with st.sidebar.form(key='search_form'):
 
 
 st_m = folium_static(m1, width=1000, height=500)
-if bs_poly is not None:
+if df_bs_poly is not None:
     st.write(df_bs_poly)
 else:
     st.write("테이블")
