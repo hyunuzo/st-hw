@@ -34,7 +34,7 @@ st.set_page_config(layout="wide")
 #     st.write("폴리곤 파일을 업로드해주세요.")
 
 geo_str = json.load(open(path_geo,encoding='utf-8'))
-m = folium.Map(location=[35.164567,-230.937195], zoom_start=6)
+m = folium.Map(location=[35.176934,129.178065], zoom_start=6)
 folium.Choropleth(    geo_data = geo_str).add_to(m)
 
 st_map = folium_static(m, width = 1100, height=500)
