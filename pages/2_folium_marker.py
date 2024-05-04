@@ -13,6 +13,7 @@ from streamlit_folium import folium_static
 
 
 path_csv = 'img/국토교통부_전국 버스정류장 위치정보1_20231016.csv'
+path_geo = 'img/s.geojson'
 bus_stop = pd.read_csv(path_csv)
 geometry = [Point(xy) for xy in zip(bus_stop['경도'],bus_stop['위도'])]
 gdf_bs = gpd.GeoDataFrame(bus_stop,geometry=geometry,crs='epsg:4326')
@@ -21,17 +22,18 @@ gdf_bs = gpd.GeoDataFrame(bus_stop,geometry=geometry,crs='epsg:4326')
 
 st.set_page_config(layout="wide")
 
-uploaded_file = st.file_uploader("Choose a file")
+# uploaded_file = st.file_uploader("Choose a file")
 
-st.write(uploaded_file.getvalue())
-st.write(StringIO(uploaded_file.getvalue().decode("utf-8")))
+# st.write(uploaded_file.getvalue())
+# st.write(StringIO(uploaded_file.getvalue().decode("utf-8")))
 
-if uploaded_file is not None:
-    gdf = gpd.read_file(uploaded_file)
-    geo_str = json.load(open(uploaded_file,encoding='utf-8'))
-else:
-    st.write("폴리곤 파일을 업로드해주세요.")
+# if uploaded_file is not None:
+#     gdf = gpd.read_file(uploaded_file)
+#     geo_str = json.load(open(uploaded_file,encoding='utf-8'))
+# else:
+#     st.write("폴리곤 파일을 업로드해주세요.")
 
+geo_str = json.load(open(path_geo,encoding='utf-8'))
 m = folium.Map(location=[35.164567,-230.937195], zoom_start=6)
 folium.Choropleth(    geo_data = geo_str).add_to(m)
 
