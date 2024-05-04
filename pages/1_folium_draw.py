@@ -4,6 +4,8 @@ import streamlit as st
 from folium.plugins import Draw
 from streamlit_folium import st_folium
 from io import StringIO
+import geopandas as gpd
+
 
 path_csv = 'img/국토교통부_전국 버스정류장 위치정보1_20231016.csv'
 bus_stop = pd.read_csv(path_csv)
@@ -16,7 +18,11 @@ Draw(export=True).add_to(m)
 uploaded_file = st.file_uploader("Choose a file")
 st.write(uploaded_file.getvalue())
 st.write(StringIO(uploaded_file.getvalue().decode("utf-8")))
-st.write(bus_stop.head(10))
+
+gdf = gpd.read_file(uploaded_file)
+
+
+
 
 # if uploaded_file is not None:
 #     # To read file as bytes:
