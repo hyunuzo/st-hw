@@ -41,6 +41,7 @@ geo_str = json.load(open(path_geo,encoding='utf-8'))
 m1 = folium.Map(location=[35.176934,129.178065], zoom_start=6)
 
 # st_map = folium_static(m, width = 1100, height=500)
+bs_poly = []
 
 with st.sidebar.form(key='search_form'):
     submit_button = st.form_submit_button(label='조회')
@@ -63,7 +64,7 @@ with st.sidebar.form(key='search_form'):
 
 st_m = folium_static(m1, width=1000, height=500)
 if bs_poly is not None:
-    st.table(bs_poly)
+    st.write(bs_poly)
 else:
     st.write("테이블")
 
