@@ -5,6 +5,8 @@ from folium.plugins import Draw
 from streamlit_folium import st_folium
 from io import StringIO
 
+path_csv = 'img/국토교통부_전국 버스정류장 위치정보_20231016.csv'
+bus_stop = pd.read_csv(path_csv,encoding = 'ANSI')
 
 st.set_page_config(layout="wide")
 
@@ -14,6 +16,7 @@ Draw(export=True).add_to(m)
 uploaded_file = st.file_uploader("Choose a file")
 st.write(uploaded_file.getvalue())
 st.write(StringIO(uploaded_file.getvalue().decode("utf-8")))
+st.write(bus_stop.head(10))
 
 # if uploaded_file is not None:
 #     # To read file as bytes:
