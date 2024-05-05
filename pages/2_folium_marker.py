@@ -39,7 +39,6 @@ geo_str = json.load(open(path_geo,encoding='utf-8'))
 # folium.Choropleth(    geo_data = geo_str).add_to(m)
 
 m1 = folium.Map(location=[35.176934,129.178065], zoom_start=6)
-m1.add_child(MeasureControl())
 # st_map = folium_static(m, width = 1100, height=500)
 
 df_bs_poly = None
@@ -55,6 +54,7 @@ with st.sidebar.form(key='search_form'):
             df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
             m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=11)
             folium.GeoJson(data=gdf['geometry']).add_to(m1)
+            m1.add_child(MeasureControl())
             # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
             for idx, row in bs_poly.iterrows():
                 popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
