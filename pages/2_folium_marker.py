@@ -39,7 +39,7 @@ geo_str = json.load(open(path_geo,encoding='utf-8'))
 # folium.Choropleth(    geo_data = geo_str).add_to(m)
 
 m1 = folium.Map(location=[35.176934,129.178065], zoom_start=6)
-m.add_child(MeasureControl())
+m1.add_child(MeasureControl())
 # st_map = folium_static(m, width = 1100, height=500)
 
 df_bs_poly = None
