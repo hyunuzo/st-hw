@@ -1,14 +1,31 @@
 import pandas as pd
 import folium
 import streamlit as st
-from streamlit_folium import st_folium
+from streamlit_folium import folium_static
 from folium.plugins import Draw
 from io import StringIO
 import geopandas as gpd
 from shapely.geometry import Polygon, MultiPolygon, Point
 from shapely.geometry import Point
+import json
+
+
+path_csv = 'img/국토교통부_전국 버스정류장 위치정보1_20231016.csv'
+path_geo = 'img/s.geojson'
+bus_stop = pd.read_csv(path_csv)
+geometry = [Point(xy) for xy in zip(bus_stop['경도'],bus_stop['위도'])]
+gdf_bs = gpd.GeoDataFrame(bus_stop,geometry=geometry,crs='epsg:4326')
+gdf = gpd.read_file(path_geo)
+geo_str = json.load(open(path_geo,encoding='utf-8'))
+
+
+
+
 
 st.set_page_config(layout="wide")
+
+
+
 
 m = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
 Draw(export=True).add_to(m)
@@ -40,7 +57,7 @@ with st.sidebar.form(key='search_form'):
 
 
 
-
+output = folium_static(m, width=1000, height=500)
 st_m = folium_static(m1, width=1000, height=500)
 if df_bs_poly is not None:
     st.write(df_bs_poly)
