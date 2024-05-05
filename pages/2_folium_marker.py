@@ -33,8 +33,8 @@ st.set_page_config(layout="wide")
 # else:
 #     st.write("폴리곤 파일을 업로드해주세요.")
 
-gdf = gpd.read_file(path_geo)
-geo_str = json.load(open(path_geo,encoding='utf-8'))
+# gdf = gpd.read_file(path_geo)
+# geo_str = json.load(open(path_geo,encoding='utf-8'))
 # m = folium.Map(location=[35.176934,129.178065], zoom_start=6)
 # folium.Choropleth(    geo_data = geo_str).add_to(m)
 
