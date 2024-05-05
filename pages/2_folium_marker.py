@@ -9,7 +9,7 @@ from shapely.geometry import Polygon, MultiPolygon, Point
 from shapely.geometry import Point
 import json
 from streamlit_folium import folium_static
-
+from folium.plugins import MeasureControl
 
 
 path_csv = 'img/국토교통부_전국 버스정류장 위치정보1_20231016.csv'
@@ -39,7 +39,7 @@ geo_str = json.load(open(path_geo,encoding='utf-8'))
 # folium.Choropleth(    geo_data = geo_str).add_to(m)
 
 m1 = folium.Map(location=[35.176934,129.178065], zoom_start=6)
-
+m.add_child(MeasureControl())
 # st_map = folium_static(m, width = 1100, height=500)
 
 df_bs_poly = None
