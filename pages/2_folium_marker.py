@@ -59,8 +59,6 @@ with st.sidebar.form(key='search_form'):
             for idx, row in bs_poly.iterrows():
                 popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
-    else:
-        st.write("hello")
 
 
 
