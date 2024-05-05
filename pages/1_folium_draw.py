@@ -17,6 +17,7 @@ Draw(export=True).add_to(m)
 c1, c2 = st.columns([7,3])
 with c1:
     output = st_folium(m, width=1000, height=500)
+    st.write(str(output))
 
 with c2:
     st.write(output)
