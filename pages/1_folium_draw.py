@@ -7,6 +7,8 @@ from io import StringIO
 import geopandas as gpd
 from shapely.geometry import Polygon, MultiPolygon, Point
 from shapely.geometry import Point
+from streamlit_folium import folium_static
+
 
 st.set_page_config(layout="wide")
 
@@ -16,7 +18,7 @@ Draw(export=True).add_to(m)
 
 c1, c2 = st.columns([7,3])
 with c1:
-    output = st_folium(m, width=1000, height=500)
+    output = folium_static(m, width=1000, height=500)
 
 with c2:
     st.write(output)
