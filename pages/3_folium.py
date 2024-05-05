@@ -46,7 +46,7 @@ with st.sidebar.form(key='search_form'):
         if submit_button:
             bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
             df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
-            m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=12)
+            m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=13)
             folium.GeoJson(data=gdf['geometry']).add_to(m1)
             # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
             for idx, row in bs_poly.iterrows():
