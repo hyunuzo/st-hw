@@ -20,5 +20,5 @@ c1, c2 = st.columns([7,3])
 with c1:
     output = folium_static(m, width=1000, height=500)
 
-with c2:
-    st.write(output)
+# with c2:
+#     st.write(output)
