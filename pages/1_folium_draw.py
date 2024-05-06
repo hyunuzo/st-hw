@@ -21,4 +21,4 @@ with c1:
     output = folium_static(m, width=1000, height=500)
 
 with c2:
-    st.write(output)
+    st.write(st_folium(m, width=1000, height=500))
