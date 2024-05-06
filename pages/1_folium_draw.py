@@ -16,10 +16,10 @@ m = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
 Draw(export=True).add_to(m)
 
 
-c1, c2 = st.columns([7,3])
-with c1:
-    output = folium_static(m, width=1000, height=500)
+# c1, c2 = st.columns([7,3])
+# with c1:
+#     output = folium_static(m, width=1000, height=500)
 
-with c2:
-    st.write(st_folium(m, width=1000, height=500))
-    st.write(st_folium(m, width=1000, height=500,returned_objects="last_active_drawing"))
+# with c2:
+#     st.write(st_folium(m, width=1000, height=500))
+st.write(st_folium(m, width=1000, height=500,returned_objects="last_active_drawing"))
