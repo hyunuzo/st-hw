@@ -56,10 +56,14 @@ with st.sidebar.form(key='search_form'):
 
 
 
+if submit_button:
+    st_m = folium_static(m1, width=1000, height=500)
+else:
+    output = folium_static(m, width=1000, height=500)
 
-output = folium_static(m, width=1000, height=500)
-st_m = folium_static(m1, width=1000, height=500)
 if df_bs_poly is not None:
     st.write(df_bs_poly)
 else:
     st.write("조회시 테이블이 표시됩니다.")
+
+
