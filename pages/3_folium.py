@@ -59,12 +59,13 @@ if st.button("폴리곤 그리기"):
 else:
     if submit_button:
         st_m = folium_static(m1, width=1000, height=500)
+        if df_bs_poly is not None:
+            st.write(df_bs_poly)
+        else:
+            st.write("데이터가 없습니다.")
     else:
         output = folium_static(m, width=1000, height=500)
 
-if df_bs_poly is not None:
-    st.write(df_bs_poly)
-else:
-    st.write("조회시 테이블이 표시됩니다.")
+
 
 
