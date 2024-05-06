@@ -43,43 +43,21 @@ m1 = folium.Map(location=[35.176934,129.178065], zoom_start=6)
 
 df_bs_poly = None
 
-
-gdf_str ='{"type": "Feature","properties": {},"geometry": {"type": "Polygon","coordinates": [[[129.111671,35.167634],[129.12034,35.170511],[129.130468,35.165529],[129.135532,35.159705],[129.120684,35.156898],[129.110899,35.161459],[129.111671,35.167634]]]}'
-gdf1 = json.loads(gdf_str)
-
-
 with st.sidebar.form(key='search_form'):
     submit_button = st.form_submit_button(label='조회')
-    if submit_button:        
-        bs_poly = gpd.sjoin(gdf_bs,gdf1,how='inner')
-        df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
-        m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=11)
-        folium.GeoJson(data=gdf1['geometry']).add_to(m1)
-        m1.add_child(MeasureControl())
-        # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
-        for idx, row in bs_poly.iterrows():
-            popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
-            folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
-
-
-
-
-
-# with st.sidebar.form(key='search_form'):
-#     submit_button = st.form_submit_button(label='조회')
-#     uploaded_file = st.file_uploader("폴리곤파일(.geojson)을 업로드해주세요.")
-#     if uploaded_file is not None:
-#         gdf = gpd.read_file(uploaded_file)
-#         if submit_button:
-#             bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
-#             df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
-#             m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=11)
-#             folium.GeoJson(data=gdf['geometry']).add_to(m1)
-#             m1.add_child(MeasureControl())
-#             # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
-#             for idx, row in bs_poly.iterrows():
-#                 popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
-#                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
+    uploaded_file = st.file_uploader("폴리곤파일(.geojson)을 업로드해주세요.")
+    if uploaded_file is not None:
+        gdf = gpd.read_file(uploaded_file)
+        if submit_button:
+            bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
+            df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
+            m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=11)
+            folium.GeoJson(data=gdf['geometry']).add_to(m1)
+            m1.add_child(MeasureControl())
+            # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
+            for idx, row in bs_poly.iterrows():
+                popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
+                folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
 
 
 
