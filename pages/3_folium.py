@@ -54,12 +54,13 @@ with st.sidebar.form(key='search_form'):
                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
 
 
-
-
-if submit_button:
-    st_m = folium_static(m1, width=1000, height=500)
+if st.button("폴리곤 그리기"):
+     output = folium_static(m, width=1000, height=500)
 else:
-    output = folium_static(m, width=1000, height=500)
+    if submit_button:
+        st_m = folium_static(m1, width=1000, height=500)
+    else:
+        output = folium_static(m, width=1000, height=500)
 
 if df_bs_poly is not None:
     st.write(df_bs_poly)
