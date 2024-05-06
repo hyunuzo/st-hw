@@ -40,7 +40,7 @@ df_bs_poly = None
 
 with st.sidebar.form(key='search_form'):
     submit_button = st.form_submit_button(label='조회')
-    uploaded_file = st.file_uploader("폴리곤파일(.geojson)을 업로드해주세요.")
+    uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.")
     if uploaded_file is not None:
         gdf = gpd.read_file(uploaded_file)
         if submit_button:
