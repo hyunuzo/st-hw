@@ -22,3 +22,4 @@ with c1:
 
 with c2:
     st.write(st_folium(m, width=1000, height=500))
+    st.write(st_folium(m, width=1000, height=500,returned_objects="last_active_drawing"))
