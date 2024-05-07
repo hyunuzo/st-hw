@@ -73,13 +73,14 @@ with col1:
 with col2:
     st.empty()
 with col3:
-   b1 = st.button("다시 폴리곤 그리기") 
+   b1 = st.button("폴리곤 다시 그리기") 
 if b1:
      output = folium_static(m, width=1000, height=500)
 else:
     if button:
         st_m = folium_static(m1, width=1000, height=500)
         if df_bs_poly is not None:
+            st.metric(label="수량",value=len(df_bs_poly))
             st.write(df_bs_poly)
         else:
             st.write("데이터가 없습니다.")
