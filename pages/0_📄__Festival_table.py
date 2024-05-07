@@ -70,13 +70,13 @@ def marker(dataframe,zoom_lv):
 
 # 데이터 불러오기 
 df_fest_raw = api_data(url1)
-df_event_raw = api_data(url2)
+# df_event_raw = api_data(url2)
 
 # 필요한 컬럼만
-df_fest = df_fest_raw[['fstvlNm', 'opar', 'fstvlStartDate', 'fstvlEndDate', 'fstvlCo', 'mnnstNm', 'auspcInsttNm', 'suprtInsttNm', 'phoneNumber', 'homepageUrl', 'rdnmadr', 'lnmadr', 'latitude', 'longitude']]
-df_event = df_event_raw[['eventNm', 'opar', 'eventStartDate', 'eventEndDate', 'eventCo', 'mnnstNm', 'auspcInsttNm', 'suprtInsttNm', 'phoneNumber', 'homepageUrl', 'rdnmadr', 'lnmadr', 'latitude', 'longitude']]
+df = df_fest_raw[['fstvlNm', 'opar', 'fstvlStartDate', 'fstvlEndDate', 'fstvlCo', 'mnnstNm', 'auspcInsttNm', 'suprtInsttNm', 'phoneNumber', 'homepageUrl', 'rdnmadr', 'lnmadr', 'latitude', 'longitude']]
+# df_event = df_event_raw[['eventNm', 'opar', 'eventStartDate', 'eventEndDate', 'eventCo', 'mnnstNm', 'auspcInsttNm', 'suprtInsttNm', 'phoneNumber', 'homepageUrl', 'rdnmadr', 'lnmadr', 'latitude', 'longitude']]
 
-df = pd.merge([df_fest, df_event])
+# df = pd.merge([df_fest, df_event])
 
 
 ### 데이터 가공
