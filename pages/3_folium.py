@@ -68,8 +68,9 @@ with col1:
                         folium.GeoJson(data=gdf['geometry']).add_to(m1)
                         # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
                         for idx, row in bs_poly.iterrows():
-                            popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
-                            folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
+                            popup = f"Name: {row['정류장명']}" # 마커 팝업에 표시할 정보 설정
+                            tooltip = f"정류장번호: {row['정류장번호']}"
+                            folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
 with col2:
     st.empty()
 with col3:
