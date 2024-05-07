@@ -69,7 +69,7 @@ def marker(dataframe,zoom_lv):
             return m
 
 # 데이터 불러오기 
-df_fest_raw = api_data(url1)
+df = api_data(url1)
 # df_event_raw = api_data(url2)
 
 # 필요한 컬럼만
