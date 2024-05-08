@@ -62,7 +62,7 @@ with st.container(height=210,border=False):
             with c1:
                 uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
             with c2:
-                button = st.form_submit_button(label='🔎 **조 회 하 기** 🔎')
+                button = st.form_submit_button(label='🔎 조 회 하 기 🔎')
                 
                 b1 = st.form_submit_button("🔄 :blue[영역 재설정] 🔄")
             if button:
