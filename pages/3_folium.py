@@ -58,7 +58,7 @@ with st.container(height=210,border=False):
         st.write("text text text text text text text text text ")
     with col2:
         with st.form("poly_form"):
-            c1,c2 = st.columns([0.7,0.3])
+            c1,c2 = st.columns([0.2,0.8])
             with c1:
                 button = st.form_submit_button(label='🔎 조 회 하 기 🔎')
                 
