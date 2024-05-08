@@ -19,19 +19,12 @@ LOGGER = get_logger(__name__)
 
 def run():
     st.set_page_config(
-        page_title="전국문화축제",
+        page_title="streamlit 연습페이지",
         page_icon="👋",
     )
 
-    st.write("# 전국문화축제 조회")
-  
+    st.write("# Streamlit 연습중...")
 
-    st.markdown(
-        """
-        데이터 제공 : 한국관광공사, 지방자치단체(공공데이터)
-    """
-    )
-     
     st.image('img/fest_img.jpg')
 
 
