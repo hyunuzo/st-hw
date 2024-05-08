@@ -54,7 +54,7 @@ df_bs_poly = None
 with st.container():
     col1, col2 = st.columns([6,4])
     with col1:
-        st.header("헤더헤더헤더헤더")
+        st.header("헤더헤더헤더헤더헤더헤더헤더헤더")
     with col2:
         with st.form("poly_form"):
             uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
@@ -78,7 +78,7 @@ with st.container():
                             folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
 
 if b1:
-    output = folium_static(m, width=1000, height=500)
+    output = folium_static(m,width_scale=0.8, height=500)
 else:
     if button:
         st_m = folium_static(m1, width=1000, height=500)
