@@ -53,11 +53,12 @@ df_bs_poly = None
 #                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
 
 
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 with col1:
     with st.form("poly_form"):
         uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
         button = st.form_submit_button(label='🔎 **조회** 🔎')
+        b1 = st.button("폴리곤 다시 그리기") 
         if button:
             if uploaded_file is not None:
                     gdf = gpd.read_file(uploaded_file)
@@ -73,21 +74,18 @@ with col1:
                             folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
                         
 with col2:
-    st.empty()
-with col3:
-   b1 = st.button("폴리곤 다시 그리기") 
-if b1:
-     output = folium_static(m, width=1000, height=500)
-else:
-    if button:
-        st_m = folium_static(m1, width=1000, height=500)
-        if df_bs_poly is not None:
-            st.metric(label="수량",value=len(df_bs_poly))
-            st.write(df_bs_poly)
-        else:
-            st.write("데이터가 없습니다.")
+    if b1:
+         output = folium_static(m, width=1000, height=500)
     else:
-        output = folium_static(m, width=1000, height=500)
+        if button:
+            st_m = folium_static(m1, width=1000, height=500)
+            if df_bs_poly is not None:
+                st.metric(label="수량",value=len(df_bs_poly))
+                st.write(df_bs_poly)
+            else:
+                st.write("데이터가 없습니다.")
+        else:
+            output = folium_static(m, width=1000, height=500)
 
 
 
