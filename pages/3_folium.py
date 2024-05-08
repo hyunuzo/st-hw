@@ -22,7 +22,7 @@ geo_str = json.load(open(path_geo,encoding='utf-8'))
 
 
 
-st.set_page_config(layout="centered")
+st.set_page_config(layout="wide")
 
 
 
