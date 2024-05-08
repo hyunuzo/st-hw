@@ -58,7 +58,7 @@ with st.container():
     with col2:
         with st.form("poly_form"):
             uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
-            c1,c2 = st.columns(2)
+            c1,c2 = st.columns(2,gap="large")
             with c1:
                 button = st.form_submit_button(label='🔎 **조회** 🔎')
             with c2:
