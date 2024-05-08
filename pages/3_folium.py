@@ -78,7 +78,7 @@ with st.container(height=210,border=False):
                             popup = f"Name: {row['정류장명']}" # 마커 팝업에 표시할 정보 설정
                             tooltip = f"정류장번호: {row['정류장번호']}"
                             folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
-
+st.write("-----------------")
 if b1:
     output = folium_static(m,width=1200, height=500)
 else:
