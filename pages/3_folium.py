@@ -53,7 +53,7 @@ df_bs_poly = None
 #                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
 
 
-col1, col2 = st.columns([1,9])
+col1, col2 = st.columns([3,7])
 with col1:
     with st.form("poly_form"):
         uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
