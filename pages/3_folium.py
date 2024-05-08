@@ -53,8 +53,10 @@ df_bs_poly = None
 #                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
 
 
-col1, col2 = st.columns([3,7])
+col1, col2 = st.columns([7,3])
 with col1:
+     st.header("헤더헤더헤더헤더")
+with col2:
     with st.form("poly_form"):
         uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
         c1,c2 = st.columns(2)
@@ -75,20 +77,19 @@ with col1:
                             popup = f"Name: {row['정류장명']}" # 마커 팝업에 표시할 정보 설정
                             tooltip = f"정류장번호: {row['정류장번호']}"
                             folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
-                        
-with col2:
-    if b1:
-         output = folium_static(m, width=1000, height=500)
-    else:
-        if button:
-            st_m = folium_static(m1, width=1000, height=500)
-            if df_bs_poly is not None:
-                st.metric(label="수량",value=len(df_bs_poly))
-                st.write(df_bs_poly)
-            else:
-                st.write("데이터가 없습니다.")
+
+if b1:
+    output = folium_static(m, width=1000, height=500)
+else:
+    if button:
+        st_m = folium_static(m1, width=1000, height=500)
+        if df_bs_poly is not None:
+            st.metric(label="수량",value=len(df_bs_poly))
+            st.write(df_bs_poly)
         else:
-            output = folium_static(m, width=1000, height=500)
+            st.write("데이터가 없습니다.")
+    else:
+        output = folium_static(m, width=1000, height=500)
 
 
 
