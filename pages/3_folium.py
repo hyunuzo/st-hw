@@ -52,7 +52,7 @@ df_bs_poly = None
 #                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
 
 with st.container():
-    col1, col2 = st.columns([0.3,0.7])
+    col1, col2 = st.columns([0.4,0.6])
     with col1:
         st.header("헤더헤더헤더헤더헤더헤더헤더헤더")
         st.write("text text text text text text text text text ")
