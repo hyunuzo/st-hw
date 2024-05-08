@@ -62,8 +62,8 @@ with st.container():
             with c1:
                 uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
             with c2:
-                button = st.form_submit_button(label='🔎 **조회** 🔎')
-                b1 = st.form_submit_button("🔄 폴리곤 다시 그리기 🔄")
+                button = st.form_submit_button(label='🔎 **조     회** 🔎')
+                b1 = st.form_submit_button("🔄 **영역 재설정** 🔄")
             if button:
                 if uploaded_file is not None:
                     gdf = gpd.read_file(uploaded_file)
