@@ -51,7 +51,7 @@ df_bs_poly = None
 #                 popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
 #                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
 
-with st.container():
+with st.container(height=200):
     col1, col2 = st.columns(2)
     with col1:
         st.header("헤더헤더헤더헤더헤더헤더헤더헤더")
@@ -63,7 +63,7 @@ with st.container():
                 uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
             with c2:
                 button = st.form_submit_button(label='🔎 **조 회 하 기** 🔎')
-                st.empty()
+                
                 b1 = st.form_submit_button("🔄 **영역 재설정** 🔄")
             if button:
                 if uploaded_file is not None:
