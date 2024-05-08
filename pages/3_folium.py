@@ -58,7 +58,7 @@ with st.container():
         st.write("text text text text text text text text text ")
     with col2:
         with st.form("poly_form"):
-            c1,c2 = st.columns(2,gap="large")
+            c1,c2 = st.columns([0.7,0.3])
             with c1:
                 uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
             with c2:
