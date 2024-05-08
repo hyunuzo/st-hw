@@ -78,17 +78,17 @@ with st.container():
                             folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
 
 if b1:
-    output = folium_static(m,width_scale=0.8, height=500)
+    output = folium_static(m,width=1200, height=500)
 else:
     if button:
-        st_m = folium_static(m1, width=1000, height=500)
+        st_m = folium_static(m1, width=1200, height=500)
         if df_bs_poly is not None:
             st.metric(label="수량",value=len(df_bs_poly))
             st.write(df_bs_poly)
         else:
             st.write("데이터가 없습니다.")
     else:
-        output = folium_static(m, width=1000, height=500)
+        output = folium_static(m, width=1200, height=500)
 
 
 
