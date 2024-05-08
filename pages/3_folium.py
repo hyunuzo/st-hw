@@ -58,12 +58,14 @@ with col1:
     st.header("헤더헤더헤더헤더")
     c1,c2 = st.columns(2)
     with c1:
-        button = st.button(label='🔎 **조회** 🔎')
+        button = st.form_submit_button(label='🔎 **조회** 🔎')
     with c2:
-        b1 = st.button("🔄 폴리곤 다시 그리기 🔄")
+        b1 = st.form_submit_button("🔄 폴리곤 다시 그리기 🔄")
 with col2:
     with st.form("poly_form"):
         uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
+        
+        
         if button:
             if uploaded_file is not None:
                     gdf = gpd.read_file(uploaded_file)
