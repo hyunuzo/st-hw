@@ -24,7 +24,7 @@ geo_str = json.load(open(path_geo,encoding='utf-8'))
 
 st.set_page_config(layout="wide")
 
-
+# 영역 그리는 지도
 m = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
 Draw(export=True).add_to(m)
 
@@ -36,8 +36,15 @@ folium.plugins.Fullscreen(
 ).add_to(m)
 
 
-
+# 조회되는 지도
 m1 = folium.Map(location=[35.176934,129.178065], zoom_start=6)
+folium.plugins.Fullscreen(
+    position="topright",
+    title="전체화면",
+    title_cancel="나가기",
+    force_separate_button=True,
+).add_to(m1)
+
 
 # st_map = folium_static(m, width = 1100, height=500)
 
