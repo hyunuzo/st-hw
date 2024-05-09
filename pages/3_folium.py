@@ -77,6 +77,7 @@ with col1:
                     folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
 
     if b1:
+        uploaded_file = None
         output = folium_static(m, height=500)
     else:
         if button:
