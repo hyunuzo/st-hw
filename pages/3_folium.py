@@ -57,7 +57,11 @@ with col1:
              button = st.form_submit_button(label='🔎 조 회 하 기 🔎')
              b1 = st.form_submit_button("🔄 :blue[영역 재설정] 🔄")
              with st.popover("❔ 메 뉴 얼 ❔"):
-                 st.write("메뉴얼 내용 작성")
+                 st.write("1. 다각형(⬟) or 사각형 선택(⬛)")
+                 st.write("2. 원하는 영역 그리기")
+                 st.write("3. 지도 오른쪽 [export] 눌러 다운로드")
+                 st.write("4. 오른쪽 상단 [Browse files] 눌러 다운 받은 파일 업로드")
+                 st.write("5. 조회하기 클릭")
          with c2:
              uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
 with col2:
