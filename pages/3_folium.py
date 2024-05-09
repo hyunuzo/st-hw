@@ -30,8 +30,8 @@ Draw(export=True).add_to(m)
 
 folium.plugins.Fullscreen(
     position="topright",
-    title="Expand me",
-    title_cancel="Exit me",
+    title="전체화면",
+    title_cancel="나가기",
     force_separate_button=True,
 ).add_to(m)
 
