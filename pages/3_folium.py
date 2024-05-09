@@ -24,7 +24,16 @@ geo_str = json.load(open(path_geo,encoding='utf-8'))
 
 st.set_page_config(layout="wide")
 
-
+st.markdown(
+    """
+    <style>
+        .reportview-container .main {
+            max-width: 1200px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 m = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
