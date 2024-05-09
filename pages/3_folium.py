@@ -64,7 +64,7 @@ with col1:
                  st.write("5. 조회하기 클릭")
                  st.write("+ 영역 다시 그리려면 [영역재설정] 클릭 후 위 방법 반복")
          with c2:
-             uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
+             uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
 with col2:
     st.empty()
 
