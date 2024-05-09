@@ -56,7 +56,7 @@ with col1:
          with c1:
              button = st.form_submit_button(label="🔎 :green[조 회 하 기] 🔎")
              b1 = st.form_submit_button("🔄 :blue[영역 재설정] 🔄")
-             with st.popover("❔ 메 뉴 얼 ❔"):
+             with st.popover("❔ 메뉴얼 보기❔"):
                  st.write("1. 지도 왼편 다각형(⬟) or 사각형(■) 선택")
                  st.write("2. 원하는 영역 그리기")
                  st.write("3. 지도 오른편 [Export] 눌러 파일 다운받기")
