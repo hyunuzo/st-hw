@@ -56,6 +56,8 @@ with col1:
          with c1:
              button = st.form_submit_button(label='🔎 조 회 하 기 🔎')
              b1 = st.form_submit_button("🔄 :blue[영역 재설정] 🔄")
+             with st.popover("❔ 메 뉴 얼 ❔"):
+                 st.write("메뉴얼 내용 작성")
          with c2:
              uploaded_file = st.file_uploader("폴리곤파일(*.geojson)을 업로드해주세요.",type='geojson')
 with col2:
