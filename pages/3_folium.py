@@ -62,7 +62,7 @@ with col1:
                  st.write("3. 지도 오른편 [Export] 눌러 파일 다운받기")
                  st.write("4. 오른쪽 상단 [Browse files] 눌러 다운 받은 파일 업로드")
                  st.write("5. [조회하기] 클릭")
-                 st.write("➕ 영역을 다시 그리려면 [영역재설정] 클릭 후 다시 진행")
+                 st.write("📢 영역을 다시 그리려면 [영역재설정] 클릭 후 다시 진행")
          with c2:
              uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
 with col2:
