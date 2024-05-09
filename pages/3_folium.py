@@ -24,16 +24,17 @@ geo_str = json.load(open(path_geo,encoding='utf-8'))
 
 st.set_page_config(layout="wide")
 
-st.markdown(
-    """
-    <style>
-        .reportview-container .main {
-            max-width: 1200px;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+
+def _max_width_(prcnt_width:int = 75):
+    max_width_str = f"max-width: {prcnt_width}%;"
+    st.markdown(f""" 
+                <style> 
+                .reportview-container .main .block-container{{{max_width_str}}}
+                </style>    
+                """, 
+                unsafe_allow_html=True,
+    )
+
 
 
 m = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
