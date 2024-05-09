@@ -61,33 +61,33 @@ with col1:
 with col2:
     st.empty()         
 
-
-if button:
-    if uploaded_file is not None:
-        gdf = gpd.read_file(uploaded_file)
-        if button:
-            bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
-            df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
-            m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=14)
-            folium.GeoJson(data=gdf['geometry']).add_to(m1)
-            # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
-            for idx, row in bs_poly.iterrows():
-                popup = f"Name: {row['정류장명']}" # 마커 팝업에 표시할 정보 설정
-                tooltip = f"정류장번호: {row['정류장번호']}"
-                folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
-
-if b1:
-    output = folium_static(m,width=1200, height=500)
-else:
+with col1:
     if button:
-        st_m = folium_static(m1, width=1200, height=500)
-        if df_bs_poly is not None:
-            st.metric(label="수량",value=len(df_bs_poly))
-            st.write(df_bs_poly)
-        else:
-            st.write("데이터가 없습니다.")
+        if uploaded_file is not None:
+            gdf = gpd.read_file(uploaded_file)
+            if button:
+                bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
+                df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
+                m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=14)
+                folium.GeoJson(data=gdf['geometry']).add_to(m1)
+                # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
+                for idx, row in bs_poly.iterrows():
+                    popup = f"Name: {row['정류장명']}" # 마커 팝업에 표시할 정보 설정
+                    tooltip = f"정류장번호: {row['정류장번호']}"
+                    folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
+
+    if b1:
+        output = folium_static(m,width=1200, height=500)
     else:
-        output = folium_static(m, width=1200, height=500)
+        if button:
+            st_m = folium_static(m1, width=1200, height=500)
+            if df_bs_poly is not None:
+                st.metric(label="수량",value=len(df_bs_poly))
+                st.write(df_bs_poly)
+            else:
+                st.write("데이터가 없습니다.")
+        else:
+            output = folium_static(m, width=1200, height=500)
 
 
 
