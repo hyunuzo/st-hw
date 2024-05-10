@@ -10,11 +10,9 @@ from shapely.geometry import Point
 import json
 
 
-path_csv = 'img/전국신호등표준데이터1.csv'
+path_csv = 'img/국토교통부_전국 버스정류장 위치정보1_20231016.csv'
 path_geo = 'img/s.geojson'
 bus_stop = pd.read_csv(path_csv)
-bus_stop['경도'] = bus_stop['경도'].fillna(0.0)
-bus_stop['위도'] = bus_stop['위도'].fillna(0.0)
 geometry = [Point(xy) for xy in zip(bus_stop['경도'],bus_stop['위도'])]
 gdf_bs = gpd.GeoDataFrame(bus_stop,geometry=geometry,crs='epsg:4326')
 gdf = gpd.read_file(path_geo)
@@ -93,8 +91,8 @@ if button:
             folium.GeoJson(data=gdf['geometry'],).add_to(m1)
             # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
             for idx, row in bs_poly.iterrows():
-                popup = folium.Popup("<b>소재지주소 : </b>" + f"{row['소재지지번주소']}",max_width=300) # 마커 팝업에 표시할 정보 설정
-                tooltip = f"신호등관리번호: {row['신호등관리번호']}"
+                popup = folium.Popup("<b>정류장명 : </b>" + f"{row['정류장명']}",max_width=300) # 마커 팝업에 표시할 정보 설정
+                tooltip = f"정류장번호: {row['정류장번호']}"
                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
 if b1:
     with col1:
