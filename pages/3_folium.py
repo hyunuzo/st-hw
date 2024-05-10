@@ -12,7 +12,7 @@ import json
 
 path_csv = 'img/전국신호등표준데이터.csv'
 path_geo = 'img/s.geojson'
-bus_stop = pd.read_csv(path_csv)
+bus_stop = pd.read_csv(path_csv,encoding='ANSI')
 geometry = [Point(xy) for xy in zip(bus_stop['경도'],bus_stop['위도'])]
 gdf_bs = gpd.GeoDataFrame(bus_stop,geometry=geometry,crs='epsg:4326')
 gdf = gpd.read_file(path_geo)
