@@ -10,6 +10,8 @@ from shapely.geometry import Point
 import json
 
 
+
+# 데이터 전처리
 path_csv = 'img/국토교통부_전국 버스정류장 위치정보1_20231016.csv'
 path_geo = 'img/s.geojson'
 bus_stop = pd.read_csv(path_csv)
@@ -87,12 +89,14 @@ if bt_reset:
 else:
     if bt_search:
         if uploaded_file is not None:
-            with col1:
-                st_m = folium_static(m1,width=1100,height=500)
-                if df_bs_poly is not None:
-                    st.metric(label="수량",value=len(df_bs_poly))
+            if df_bs_poly is not None:
+                with col1:
+                    st_m = folium_static(m1,width=1100,height=500)
                     st.write(df_bs_poly)
-                else:
+                with col2:
+                    st.metric(label="수량",value=len(df_bs_poly))
+            else:
+                with col1:
                     st.write("데이터가 없습니다.")
         else:
             with col1:
