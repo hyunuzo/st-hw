@@ -92,6 +92,7 @@ else:
                     st.metric(label="수량",value=len(df_bs_poly))
                     st.metric(label="Metric_sample1",value= 80,delta="-3.5%")
                     st.metric(label="Metric_sample2",value= 76,delta="3.5%")
+                    st.metric(label="Metric_sample3",value= 76,delta="10%")
                 st.write("[RAW DATA]")
                 st.write(df_bs_poly)
             else:
