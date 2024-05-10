@@ -91,10 +91,9 @@ else:
         if uploaded_file is not None:
             if df_bs_poly is not None:
                 with col1:
+                    st.metric(label="수량",value=len(df_bs_poly))
                     st_m = folium_static(m1,width=1100,height=500)
                     st.write(df_bs_poly)
-                with col2:
-                    st.metric(label="수량",value=len(df_bs_poly))
             else:
                 with col1:
                     st.write("데이터가 없습니다.")
