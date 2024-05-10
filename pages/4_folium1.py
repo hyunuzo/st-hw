@@ -60,7 +60,7 @@ with t1:
     with st.container(height= 180,border=None):
         b1, b2 = st.columns([0.3,0.7])
         with b1:
-            date1 = st.date_input()
+            date1 = st.date_input("조회할 날짜")
             bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)
             bt_reset = st.button("🔄  :blue[영역 재설정] ",use_container_width=True)
 
