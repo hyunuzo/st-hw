@@ -98,6 +98,7 @@ with t1:
                         st.metric(label="Metric_sample2",value= 76,delta="3.5%")
                         st.metric(label="Metric_sample3",value= 76,delta="10%")
                     st.write("[RAW DATA]")
+                    st.write(date1)
                     st.write(df_bs_poly)
                 else:
                     st.write("데이터가 없습니다.")
