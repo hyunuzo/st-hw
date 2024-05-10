@@ -47,7 +47,7 @@ df_bs_poly = None
 t1,t2 = st.columns([0.9,0.1])
 with t1:
     st.header("타이틀 내용 입력")
-    with st.popover("📝  사용법 보기"):
+    with st.expander("📝  사용법 보기"):
                 st.write("1. 지도 왼편 다각형(⬟) or 사각형(■) 선택")
                 st.write("2. 원하는 영역 그리기")
                 st.write("3. 지도 오른편 :blue-background[Export] 눌러 파일 다운받기")
