@@ -35,6 +35,7 @@ folium.plugins.Fullscreen(
     force_separate_button=True,
 ).add_to(m)
 
+m1 = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
 # st_map = folium_static(m, width = 1100, height=500)
 df_bs_poly = None
 
