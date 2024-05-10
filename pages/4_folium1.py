@@ -57,7 +57,7 @@ with t1:
     with st.container(height= 550):
         a1, a2 = st.columns([0.9,0.1])
 
-    with st.container(height= 180,border=None):
+    with st.container(height= 200,border=None):
         b1, b2 = st.columns([0.3,0.7])
         with b1:
             date1 = st.date_input("조회할 날짜")
