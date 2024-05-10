@@ -51,7 +51,7 @@ with t1:
                 st.write("1. 지도 왼편 다각형(⬟) or 사각형(■) 선택")
                 st.write("2. 원하는 영역 그리기")
                 st.write("3. 지도 오른편 :blue-background[Export] 눌러 파일 다운받기")
-                st.write("4. 오른쪽 상단 :blue-background[Browse files] 눌러 다운받은 파일(*.geojson) 업로드")
+                st.write("4. :blue-background[Browse files] 눌러 다운받은 파일(*.geojson) 업로드")
                 st.write("5. :blue-background[조회하기] 클릭")
                 st.write("📢 영역을 다시 그리려면 :blue-background[영역재설정] 클릭 후 다시 진행")
     with st.container(height= 550):
