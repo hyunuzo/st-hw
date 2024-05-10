@@ -90,7 +90,8 @@ else:
                     st_m = folium_static(m1,width=1100,height=500)
                 with b2:
                     st.metric(label="수량",value=len(df_bs_poly))
-                    st.metric(label="KPI",value= 100,delta="-3.5%")
+                    st.metric(label="KPI",value= 80,delta="-3.5%")
+                    st.metric(label="PI",value= 76,delta="3.5%")
                 st.write("[RAW DATA]")
                 st.write(df_bs_poly)
             else:
