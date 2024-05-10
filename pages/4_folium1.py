@@ -76,7 +76,9 @@ with t1:
             gdf = gpd.read_file(uploaded_file)
             bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
             if len(bs_poly) == 0:
-                m1 = folium.Map(location=[gdf.geometry.y.mean(),gdf.geometry.x.mean()], zoom_start=15)
+                gdf_center = gdf['geometry'].centroid  # 폴리곤 중앙 좌표값
+                df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
+                m1 = folium.Map(location=[gdf_center.y,gdf_center.x], zoom_start=15)
                 folium.plugins.Fullscreen(position="topright",title="전체화면",title_cancel="나가기",force_separate_button=True).add_to(m1)
                 folium.GeoJson(data=gdf['geometry'],).add_to(m1)
                 with a1:
