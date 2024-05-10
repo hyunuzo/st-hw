@@ -76,9 +76,18 @@ with t1:
             gdf = gpd.read_file(uploaded_file)
             bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
             if len(bs_poly) == 0:
+                m1 = folium.Map(location=[gdf.geometry.y.mean(),gdf.geometry.x.mean()], zoom_start=15)
+                folium.plugins.Fullscreen(position="topright",title="전체화면",title_cancel="나가기",force_separate_button=True).add_to(m1)
+                folium.GeoJson(data=gdf['geometry'],).add_to(m1)
                 with a1:
-                    st.write("데이터가 없습니다.")
-                    output = folium_static(m,width=1100, height=500)
+                    st_m = folium_static(m1,width=1100,height=500)
+                with a2:
+                    st.metric(label="수량",value=len(df_bs_poly))
+                    st.metric(label="Metric_sample1",value= 80,delta="-3.5%")
+                    st.metric(label="Metric_sample2",value= 76,delta="3.5%")
+                    st.metric(label="Metric_sample3",value= 76,delta="10%")
+                st.write("[RAW DATA]")
+                st.write(df_bs_poly)                    
             else:
                 df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
                 m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
@@ -91,15 +100,6 @@ with t1:
                     folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
                 with a1:
                     st_m = folium_static(m1,width=1100,height=500)
-                with a2:
-                    st.metric(label="수량",value=len(df_bs_poly))
-                    st.metric(label="Metric_sample1",value= 80,delta="-3.5%")
-                    st.metric(label="Metric_sample2",value= 76,delta="3.5%")
-                    st.metric(label="Metric_sample3",value= 76,delta="10%")
-                st.write("[RAW DATA]")
-                st.write(df_bs_poly)
-
-
         else:
             with a1:
                 st.subheader("⛔   :red[파일을 업로드한 후 조회 해주세요.]   ⛔")
