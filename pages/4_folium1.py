@@ -58,7 +58,7 @@ with t1:
     with st.container(height= 550):
         a1, a2 = st.columns([0.9,0.1])
             
-    with st.container(height= 210,border=None):
+    with st.container(height= 200,border=None):
         b1, b2 = st.columns(2)
         with b1:
             bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)  
