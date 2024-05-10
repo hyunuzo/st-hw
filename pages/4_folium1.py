@@ -58,7 +58,7 @@ with t1:
         a1, a2 = st.columns([0.9,0.1])
     
     with st.container(height= 100):
-         date1 = st.date_input("조회할 날짜",'2024-01-01','today')
+         date1 = st.date_input("조회할 날짜",'today')
 
     with st.container(height= 210,border=None):
         b1, b2 = st.columns([0.3,0.7])
