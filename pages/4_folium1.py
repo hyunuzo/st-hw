@@ -75,7 +75,10 @@ with t1:
         if uploaded_file is not None:
             gdf = gpd.read_file(uploaded_file)
             bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
-            if bs_poly is not None:
+            if len(bs_poly) == 0:
+                st.write("데이터가 없습니다.")
+                output = folium_static(m,width=1100, height=500)
+            else:
                 df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
                 m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
                 folium.plugins.Fullscreen(position="topright",title="전체화면",title_cancel="나가기",force_separate_button=True).add_to(m1)
@@ -94,9 +97,7 @@ with t1:
                     st.metric(label="Metric_sample3",value= 76,delta="10%")
                 st.write("[RAW DATA]")
                 st.write(df_bs_poly)
-            else:
-                st.write("데이터가 없습니다.")
-                output = folium_static(m,width=1100, height=500)
+
 
         else:
             with a1:
