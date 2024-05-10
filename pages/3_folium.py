@@ -59,6 +59,9 @@ df_bs_poly = None
 #             for idx, row in bs_poly.iterrows():
 #                 popup = f"Name: {row['정류장명']}"  # 마커 팝업에 표시할 정보 설정
 #                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup).add_to(m1)
+
+st.title("타이틀 내용 입력")
+
 col1, col2 = st.columns([0.8,0.2])
 with col1:
     # with st.container(height=210,border=False):
