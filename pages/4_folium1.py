@@ -102,7 +102,9 @@ with t1:
             with a1:
                 st.subheader("⛔   :red[파일을 업로드한 후 조회 해주세요.]   ⛔")
                 output = folium_static(m,width=1100, height=500)
-
+    else:
+        with a1:
+            output = folium_static(m,width=1100, height=500)
 with t2:
     st.empty()
 
