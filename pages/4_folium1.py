@@ -50,7 +50,7 @@ st.header("타이틀 내용 입력")
 with st.container(height= 210,border=None):
     a1, a2 = st.columns([0.3,0.7])
     with a1:
-        with st.popover("📝  사용법 보기",use_container_width=True):
+        with st.expander("📝  사용법 보기"):
             st.write("1. 지도 왼편 다각형(⬟) or 사각형(■) 선택")
             st.write("2. 원하는 영역 그리기")
             st.write("3. 지도 오른편 :blue-background[Export] 눌러 파일 다운받기")
