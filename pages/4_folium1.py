@@ -8,6 +8,7 @@ import geopandas as gpd
 from shapely.geometry import Polygon, MultiPolygon, Point
 from shapely.geometry import Point
 import json
+import datetime
 
 
 
@@ -58,7 +59,7 @@ with t1:
         a1, a2 = st.columns([0.9,0.1])
     
     with st.container(height= 100):
-         date1 = st.date_input("조회할 날짜",'today')
+         date1 = st.date_input("조회할 날짜",(datetime.date(2024,1,1),'today'))
 
     with st.container(height= 210,border=None):
         b1, b2 = st.columns([0.3,0.7])
