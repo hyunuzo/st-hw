@@ -59,11 +59,11 @@ with t1:
         a1, a2 = st.columns([0.9,0.1])
     
     with st.container(height= 100):
-         st.wirte("조회할 날짜를 선택하세요")
+         st.write("조회할 날짜를 선택하세요")
          st_dt = st.date_input("시작 날짜")
          end_dt = st.date_input("끝 날짜")
          st_time = st.time_input("시작 시간")
-         end_dt = st.time_input("끝 시간")
+         end_time = st.time_input("끝 시간")
 
     with st.container(height= 210,border=None):
         b1, b2 = st.columns([0.3,0.7])
