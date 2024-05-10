@@ -91,6 +91,7 @@ else:
                 with b2:
                     st.metric(label="수량",value=len(df_bs_poly))
                     st.metric(label="KPI",value= 100)
+                st.write("[RAW DATA]")
                 st.write(df_bs_poly)
             else:
                 st.write("데이터가 없습니다.")
