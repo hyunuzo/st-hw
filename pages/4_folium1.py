@@ -47,7 +47,7 @@ df_bs_poly = None
 
 st.header("타이틀 내용 입력")
 
-with st.container(height= 230):
+with st.container(height= 230,border=None):
     a1, a2 = st.columns([0.3,0.7])
     with a1:
         with st.form("poly_form"):
@@ -77,8 +77,8 @@ with st.container(height= 230):
                 tooltip = f"정류장번호: {row['정류장번호']}"
                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
 
-with st.container(height= 500):
-    b1, b2 = st.columns([0.8,0.2])
+with st.container(height= 600):
+    b1, b2 = st.columns([0.9,0.1])
 
 if bt_reset:
     with b1:
