@@ -47,62 +47,59 @@ df_bs_poly = None
 
 st.header("타이틀 내용 입력")
 
-col1, col2 = st.columns([0.8,0.2])
-with col1:
-    # with st.container(height=210,border=False):
-    with st.form("poly_form"):
-         c1,c2 = st.columns([0.3,0.7])
-         with c1:
-             bt_search = st.form_submit_button(label="🔎  :green[조  회  하  기]")
-             bt_reset = st.form_submit_button("🔄  :blue[영역 재설정] ")
-             with st.popover("📝  사용법 보기"):
-                 st.write("1. 지도 왼편 다각형(⬟) or 사각형(■) 선택")
-                 st.write("2. 원하는 영역 그리기")
-                 st.write("3. 지도 오른편 :blue-background[Export] 눌러 파일 다운받기")
-                 st.write("4. 오른쪽 상단 :blue-background[Browse files] 눌러 다운받은 파일(*.geojson) 업로드")
-                 st.write("5. :blue-background[조회하기] 클릭")
-                 st.write("📢 영역을 다시 그리려면 :blue-background[영역재설정] 클릭 후 다시 진행")
-         with c2:
-             uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
-with col2:
-    st.empty()
+with st.container(height= 230):
+    a1, a2 = st.columns([0.3,0.7])
+    with a1:
+        with st.form("poly_form"):
+            bt_search = st.form_submit_button(label="🔎  :green[조  회  하  기]")
+            bt_reset = st.form_submit_button("🔄  :blue[영역 재설정] ")
+            with st.popover("📝  사용법 보기"):
+                st.write("1. 지도 왼편 다각형(⬟) or 사각형(■) 선택")
+                st.write("2. 원하는 영역 그리기")
+                st.write("3. 지도 오른편 :blue-background[Export] 눌러 파일 다운받기")
+                st.write("4. 오른쪽 상단 :blue-background[Browse files] 눌러 다운받은 파일(*.geojson) 업로드")
+                st.write("5. :blue-background[조회하기] 클릭")
+                st.write("📢 영역을 다시 그리려면 :blue-background[영역재설정] 클릭 후 다시 진행")
+    with a2:
+        uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
 
+    if bt_search:
+        if uploaded_file is not None:
+            gdf = gpd.read_file(uploaded_file)
+            bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
+            df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
+            m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
+            folium.plugins.Fullscreen(position="topright",title="전체화면",title_cancel="나가기",force_separate_button=True).add_to(m1)
+            folium.GeoJson(data=gdf['geometry'],).add_to(m1)
+            # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
+            for idx, row in bs_poly.iterrows():
+                popup = folium.Popup("<b>정류장명 : </b>" + f"{row['정류장명']}",max_width=300) # 마커 팝업에 표시할 정보 설정
+                tooltip = f"정류장번호: {row['정류장번호']}"
+                folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
 
-if bt_search:
-    if uploaded_file is not None:
-        gdf = gpd.read_file(uploaded_file)
-        bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
-        df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
-        m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
-        folium.plugins.Fullscreen(position="topright",title="전체화면",title_cancel="나가기",force_separate_button=True).add_to(m1)
-        folium.GeoJson(data=gdf['geometry'],).add_to(m1)
-        # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
-        for idx, row in bs_poly.iterrows():
-            popup = folium.Popup("<b>정류장명 : </b>" + f"{row['정류장명']}",max_width=300) # 마커 팝업에 표시할 정보 설정
-            tooltip = f"정류장번호: {row['정류장번호']}"
-            folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
+with st.container(height= 500):
+    b1, b2 = st.columns([0.8,0.2])
 
-    
 if bt_reset:
-    with col1:
+    with b1:
         output = folium_static(m,width=1100,height=500)
 else:
     if bt_search:
         if uploaded_file is not None:
             if df_bs_poly is not None:
-                with col1:
-                    st.metric(label="수량",value=len(df_bs_poly))
+                with b1:
                     st_m = folium_static(m1,width=1100,height=500)
-                    st.write(df_bs_poly)
+                with b2:
+                    st.metric(label="수량",value=len(df_bs_poly))
+                st.write(df_bs_poly)
             else:
-                with col1:
-                    st.write("데이터가 없습니다.")
+                st.write("데이터가 없습니다.")
         else:
-            with col1:
+            with b1:
                 st.write("‼‼‼   :red[**GeoJson파일을 업로드 후 조회 해주세요.**]   ‼‼‼")
                 output = folium_static(m,width=1100, height=500)        
     else:
-        with col1:
+        with b1:
             output = folium_static(m,width=1100, height=500)
 
 
