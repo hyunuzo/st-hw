@@ -93,7 +93,7 @@ with t1:
                 st.metric(label="Metric_sample2",value= 76,delta="3.5%")
                 st.metric(label="Metric_sample3",value= 76,delta="10%")
             st.write("[RAW DATA]")
-            st.write(df_bs_poly)                    
+            st.dataframe(df_bs_poly)                    
         else:
             with a1:
                 st.subheader("⛔   :red[파일을 업로드한 후 조회 해주세요.]   ⛔")
