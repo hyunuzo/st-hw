@@ -64,7 +64,7 @@ with t1:
             bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)  
             bt_reset = st.button("🔄  :blue[영역 재설정] ",use_container_width=True)
         with b2:
-            uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
+            uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson',on_change=None)
               
     if bt_search:
         if uploaded_file is not None:
