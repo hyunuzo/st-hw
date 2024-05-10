@@ -65,14 +65,15 @@ with t1:
          st_time = st.time_input("시작 시간")
          end_time = st.time_input("끝 시간")
 
-    with st.container(height= 210,border=None):
+    with st.container(height= 250,border=None):
         b1, b2 = st.columns([0.3,0.7])
         with b1:
             bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)
-            bt_reset = st.button("🔄  :blue[영역 재설정] ",use_container_width=True)
+            
 
         with b2:
             uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
+            bt_reset = st.button("🔄  :blue[영역 재설정] ",use_container_width=True)
 
         if bt_search:
             if uploaded_file is not None:
