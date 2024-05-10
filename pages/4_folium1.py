@@ -58,23 +58,14 @@ with t1:
     with st.container(height= 550):
         a1, a2 = st.columns([0.9,0.1])
             
-
-    with st.container(height= 300,border=None):
+    with st.container(height= 260,border=None):
         b1, b2 = st.columns(2)
         with b1:
-            with st.form("date_form"):
-                date_type = st.radio("조회 기간 설정",["날짜","시간대","날짜+시간대"])
-                if date_type == "날짜":
-                    st_dt = st.date_input("시작 날짜")
-                    end_dt = st.date_input("끝 날짜")
-                if date_type == "시간":
-                    st_time = st.time_input("시작 시간")
-                    end_time = st.time_input("끝 시간")
-                bt_search = st.form_submit_button(label="🔎  :green[조  회  하  기]",use_container_width=True)  
-
-            with b2:
-                uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
-                bt_reset = st.button("🔄  :blue[영역 재설정] ",use_container_width=True)
+            bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)  
+            bt_reset = st.button("🔄  :blue[영역 재설정] ",use_container_width=True)
+        with b2:
+            uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
+                
 
 if bt_search:
     if uploaded_file is not None:
