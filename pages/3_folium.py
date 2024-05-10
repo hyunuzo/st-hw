@@ -79,23 +79,21 @@ if bt_search:
             popup = folium.Popup("<b>정류장명 : </b>" + f"{row['정류장명']}",max_width=300) # 마커 팝업에 표시할 정보 설정
             tooltip = f"정류장번호: {row['정류장번호']}"
             folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
-    else:
-        m1 = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
-        folium.plugins.Fullscreen(position="topright",title="전체화면",title_cancel="나가기",force_separate_button=True).add_to(m1)
-        st.write("파일을 업로드해주세요.")
+
     
 if bt_reset:
     with col1:
         output = folium_static(m,width=1100,height=500)
 else:
     if bt_search:
-        with col1:
-            st_m = folium_static(m1,width=1100,height=500)
-            if df_bs_poly is not None:
-                st.metric(label="수량",value=len(df_bs_poly))
-                st.write(df_bs_poly)
-            else:
-                st.write("데이터가 없습니다.")
+        if uploaded_file is not None:
+            with col1:
+                st_m = folium_static(m1,width=1100,height=500)
+                if df_bs_poly is not None:
+                    st.metric(label="수량",value=len(df_bs_poly))
+                    st.write(df_bs_poly)
+                else:
+                    st.write("데이터가 없습니다.")
     else:
         with col1:
             output = folium_static(m,width=1100, height=500)
