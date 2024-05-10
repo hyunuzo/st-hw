@@ -50,8 +50,8 @@ st.header("타이틀 내용 입력")
 with st.container(height= 210,border=None):
     a1, a2 = st.columns([0.3,0.7])
     with a1:
-        bt_search = st.button(label="🔎  :green[조  회  하  기]")
-        bt_reset = st.button("🔄  :blue[영역 재설정] ")
+        bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)
+        bt_reset = st.button("🔄  :blue[영역 재설정] ",use_container_width=True)
         with st.popover("📝  사용법 보기",use_container_width=True):
             st.write("1. 지도 왼편 다각형(⬟) or 사각형(■) 선택")
             st.write("2. 원하는 영역 그리기")
