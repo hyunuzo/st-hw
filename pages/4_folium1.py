@@ -55,15 +55,15 @@ with t1:
                 st.write("5. :blue-background[조회하기] 클릭")
                 st.write("📢 영역을 다시 그리려면 :blue-background[영역재설정] 클릭 후 다시 진행")
     with st.container(height= 550):
-        b1, b2 = st.columns([0.9,0.1])
+        a1, a2 = st.columns([0.9,0.1])
 
     with st.container(height= 180,border=None):
-        a1, a2 = st.columns([0.3,0.7])
-        with a1:
+        b1, b2 = st.columns([0.3,0.7])
+        with b1:
             bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)
             bt_reset = st.button("🔄  :blue[영역 재설정] ",use_container_width=True)
 
-        with a2:
+        with b2:
             uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
 
         if bt_search:
@@ -83,15 +83,15 @@ with t1:
     
 
     if bt_reset:
-        with b1:
+        with a1:
             output = folium_static(m,width=1100,height=500)
     else:
         if bt_search:
             if uploaded_file is not None:
                 if df_bs_poly is not None:
-                    with b1:
+                    with a1:
                         st_m = folium_static(m1,width=1100,height=500)
-                    with b2:
+                    with a2:
                         st.metric(label="수량",value=len(df_bs_poly))
                         st.metric(label="Metric_sample1",value= 80,delta="-3.5%")
                         st.metric(label="Metric_sample2",value= 76,delta="3.5%")
@@ -101,11 +101,11 @@ with t1:
                 else:
                     st.write("데이터가 없습니다.")
             else:
-                with b1:
+                with a1:
                     st.write("‼‼‼   :red[**GeoJson파일을 업로드 후 조회 해주세요.**]   ‼‼‼")
                     output = folium_static(m,width=1100, height=500)        
         else:
-            with b1:
+            with a1:
                 output = folium_static(m,width=1100, height=500)
 
 with t2:
