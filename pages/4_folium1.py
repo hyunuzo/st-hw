@@ -50,16 +50,15 @@ st.header("타이틀 내용 입력")
 with st.container(height= 230,border=None):
     a1, a2 = st.columns([0.3,0.7])
     with a1:
-        with st.form("poly_form"):
-            bt_search = st.form_submit_button(label="🔎  :green[조  회  하  기]")
-            bt_reset = st.form_submit_button("🔄  :blue[영역 재설정] ")
-            with st.popover("📝  사용법 보기"):
-                st.write("1. 지도 왼편 다각형(⬟) or 사각형(■) 선택")
-                st.write("2. 원하는 영역 그리기")
-                st.write("3. 지도 오른편 :blue-background[Export] 눌러 파일 다운받기")
-                st.write("4. 오른쪽 상단 :blue-background[Browse files] 눌러 다운받은 파일(*.geojson) 업로드")
-                st.write("5. :blue-background[조회하기] 클릭")
-                st.write("📢 영역을 다시 그리려면 :blue-background[영역재설정] 클릭 후 다시 진행")
+        bt_search = st.button(label="🔎  :green[조  회  하  기]")
+        bt_reset = st.button("🔄  :blue[영역 재설정] ")
+        with st.popover("📝  사용법 보기"):
+            st.write("1. 지도 왼편 다각형(⬟) or 사각형(■) 선택")
+            st.write("2. 원하는 영역 그리기")
+            st.write("3. 지도 오른편 :blue-background[Export] 눌러 파일 다운받기")
+            st.write("4. 오른쪽 상단 :blue-background[Browse files] 눌러 다운받은 파일(*.geojson) 업로드")
+            st.write("5. :blue-background[조회하기] 클릭")
+            st.write("📢 영역을 다시 그리려면 :blue-background[영역재설정] 클릭 후 다시 진행")
     with a2:
         uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
 
