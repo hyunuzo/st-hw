@@ -53,7 +53,7 @@ with col1:
          with c1:
              bt_search = st.form_submit_button(label="🔎  :green[조  회  하  기]")
              bt_reset = st.form_submit_button("🔄  :blue[영역 재설정] ")
-             with st.popover("📝  메뉴얼 보기"):
+             with st.popover("📝  사용법 보기"):
                  st.write("1. 지도 왼편 다각형(⬟) or 사각형(■) 선택")
                  st.write("2. 원하는 영역 그리기")
                  st.write("3. 지도 오른편 :blue-background[Export] 눌러 파일 다운받기")
