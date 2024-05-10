@@ -56,11 +56,13 @@ with t1:
                 st.write("📢 영역을 다시 그리려면 :blue-background[🔄영역 재설정] 클릭 후 다시 진행")
     with st.container(height= 550):
         a1, a2 = st.columns([0.9,0.1])
+    
+    with st.container(height= 300):
+         date1 = st.date_input("조회할 날짜")
 
     with st.container(height= 210,border=None):
         b1, b2 = st.columns([0.3,0.7])
         with b1:
-            date1 = st.date_input("조회할 날짜")
             bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)
             bt_reset = st.button("🔄  :blue[영역 재설정] ",use_container_width=True)
 
@@ -98,7 +100,6 @@ with t1:
                         st.metric(label="Metric_sample2",value= 76,delta="3.5%")
                         st.metric(label="Metric_sample3",value= 76,delta="10%")
                     st.write("[RAW DATA]")
-                    st.write(date1)
                     st.write(df_bs_poly)
                 else:
                     st.write("데이터가 없습니다.")
