@@ -47,7 +47,7 @@ df_bs_poly = None
 
 st.header("타이틀 내용 입력")
 
-with st.container(height= 230,border=None):
+with st.container(height= 220,border=None):
     a1, a2 = st.columns([0.3,0.7])
     with a1:
         bt_search = st.button(label="🔎  :green[조  회  하  기]")
