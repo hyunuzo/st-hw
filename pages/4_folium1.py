@@ -54,7 +54,7 @@ with t1:
                 st.write("4. 지도 아래 :blue-background[Browse files] 눌러 다운받은 파일(*.geojson) 업로드")
                 st.write("5. :blue-background[🔎 조회하기] 클릭")
                 st.write("📢 영역을 다시 그리려면 :blue-background[🔄영역 재설정] 클릭 후 다시 진행")
-    with st.container(height= 550):
+    with st.container(height= 560):
         a1, a2 = st.columns([0.9,0.1])
 
     with st.container(height= 180,border=None):
