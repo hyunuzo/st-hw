@@ -61,17 +61,15 @@ with t1:
 
     with st.container(height= 300,border=None):
         b1, b2 = st.columns(2)
-        with st.form("date_form"):
-            with b1:
+        with b1:
+            with st.form("date_form"):
                 date_type = st.radio("조회 기간 설정",["날짜","시간대","날짜+시간대"])
                 if date_type == "날짜":
                     st_dt = st.date_input("시작 날짜")
                     end_dt = st.date_input("끝 날짜")
                 if date_type == "시간":
                     st_time = st.time_input("시작 시간")
-                    end_time = st.time_input("끝 시간")  
-
-
+                    end_time = st.time_input("끝 시간")
                 bt_search = st.form_submit_button(label="🔎  :green[조  회  하  기]",use_container_width=True)  
 
             with b2:
