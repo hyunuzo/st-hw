@@ -57,21 +57,21 @@ with t1:
                 st.write("📢 영역을 다시 그리려면 :blue-background[🔄영역 재설정] 클릭 후 다시 진행")
     with st.container(height= 550):
         a1, a2 = st.columns([0.9,0.1])
-    
-    with st.container(height= 100):
-         st.write("조회할 날짜를 선택하세요")
-         st_dt = st.date_input("시작 날짜")
-         end_dt = st.date_input("끝 날짜")
-         st_time = st.time_input("시작 시간")
-         end_time = st.time_input("끝 시간")
+            
 
     with st.container(height= 300,border=None):
         b1, b2, b3 = st.columns(3)
         with b1:
-            st.radio("조회 기간 설정",["일자","시간대","기간"])
+            with st.form("date_form"):
+                st.radio("조회 기간 설정",["일자","시간대","기간"])
+                bt_search = st.form_submit_button(label="🔎  :green[조  회  하  기]",use_container_width=True)
+
         with b2:
-            bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)
-            
+            st.write("조회할 날짜를 선택하세요")
+            st_dt = st.date_input("시작 날짜")
+            end_dt = st.date_input("끝 날짜")
+            st_time = st.time_input("시작 시간")
+            end_time = st.time_input("끝 시간")   
 
         with b3:
             uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
