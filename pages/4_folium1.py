@@ -74,34 +74,26 @@ with t1:
     if bt_search:
         if uploaded_file is not None:
             gdf = gpd.read_file(uploaded_file)
+            location = [gdf['geometry'].centroid.y,gdf['geometry'].centroid.x]  # 폴리곤 중앙 좌표값    
             bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
-            if len(bs_poly) == 0:
-                gdf_center = gdf['geometry'].centroid  # 폴리곤 중앙 좌표값
-                df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
-                m1 = folium.Map(location=[gdf_center.y,gdf_center.x], zoom_start=15)
-                folium.plugins.Fullscreen(position="topright",title="전체화면",title_cancel="나가기",force_separate_button=True).add_to(m1)
-                folium.GeoJson(data=gdf['geometry'],).add_to(m1)
-                with a1:
-                    st_m = folium_static(m1,width=1100,height=500)
-                with a2:
-                    st.metric(label="수량",value=len(df_bs_poly))
-                    st.metric(label="Metric_sample1",value= 80,delta="-3.5%")
-                    st.metric(label="Metric_sample2",value= 76,delta="3.5%")
-                    st.metric(label="Metric_sample3",value= 76,delta="10%")
-                st.write("[RAW DATA]")
-                st.write(df_bs_poly)                    
-            else:
-                df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
-                m1 = folium.Map(location=[bs_poly.geometry.y.mean(),bs_poly.geometry.x.mean()], zoom_start=15)
-                folium.plugins.Fullscreen(position="topright",title="전체화면",title_cancel="나가기",force_separate_button=True).add_to(m1)
-                folium.GeoJson(data=gdf['geometry'],).add_to(m1)
-                # folium.GeoJson(data=gdf['geometry'],style_function=lambda feature: {'fillColor': 'yellow','color': 'yellow'}).add_to(m1)
+            df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
+            m1 = folium.Map(location=location, zoom_start=15)
+            folium.plugins.Fullscreen(position="topright",title="전체화면",title_cancel="나가기",force_separate_button=True).add_to(m1)
+            folium.GeoJson(data=gdf['geometry'],).add_to(m1)
+            if len(bs_poly) != 0: # 폴리곤 내 포함되는 값이 있는 경우만 마커 추가
                 for idx, row in bs_poly.iterrows():
                     popup = folium.Popup("<b>정류장명 : </b>" + f"{row['정류장명']}",max_width=300) # 마커 팝업에 표시할 정보 설정
                     tooltip = f"정류장번호: {row['정류장번호']}"
                     folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
-                with a1:
+            with a1:
                     st_m = folium_static(m1,width=1100,height=500)
+            with a2:
+                st.metric(label="수량",value=len(df_bs_poly))
+                st.metric(label="Metric_sample1",value= 80,delta="-3.5%")
+                st.metric(label="Metric_sample2",value= 76,delta="3.5%")
+                st.metric(label="Metric_sample3",value= 76,delta="10%")
+            st.write("[RAW DATA]")
+            st.write(df_bs_poly)                    
         else:
             with a1:
                 st.subheader("⛔   :red[파일을 업로드한 후 조회 해주세요.]   ⛔")
