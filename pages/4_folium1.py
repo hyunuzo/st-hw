@@ -54,6 +54,9 @@ with t1:
                 st.write("4. 오른쪽 상단 :blue-background[Browse files] 눌러 다운받은 파일(*.geojson) 업로드")
                 st.write("5. :blue-background[조회하기] 클릭")
                 st.write("📢 영역을 다시 그리려면 :blue-background[영역재설정] 클릭 후 다시 진행")
+    with st.container(height= 550):
+        b1, b2 = st.columns([0.9,0.1])
+        
     with st.container(height= 180,border=None):
         a1, a2 = st.columns([0.3,0.7])
         with a1:
@@ -77,8 +80,7 @@ with t1:
                     tooltip = f"정류장번호: {row['정류장번호']}"
                     folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
 
-    with st.container(height= 550):
-        b1, b2 = st.columns([0.9,0.1])
+    
 
     if bt_reset:
         with b1:
