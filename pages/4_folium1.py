@@ -76,7 +76,7 @@ with st.container(height= 180,border=None):
                 tooltip = f"정류장번호: {row['정류장번호']}"
                 folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
 
-with st.container(height= 530):
+with st.container(height= 540):
     b1, b2 = st.columns([0.9,0.1])
 
 if bt_reset:
