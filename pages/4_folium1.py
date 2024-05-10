@@ -44,7 +44,7 @@ df_bs_poly = None
 
 ###### 화면 구성
 
-t1,t2 = st.columns([0.8,0.2])
+t1,t2 = st.columns([0.9,0.1])
 with t1:
     st.header("타이틀 내용 입력")
     with st.expander("📝  사용법 보기"):
