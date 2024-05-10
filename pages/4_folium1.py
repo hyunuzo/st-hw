@@ -65,13 +65,15 @@ with t1:
          st_time = st.time_input("시작 시간")
          end_time = st.time_input("끝 시간")
 
-    with st.container(height= 250,border=None):
-        b1, b2 = st.columns([0.3,0.7])
+    with st.container(height= 300,border=None):
+        b1, b2, b3 = st.columns(3)
         with b1:
+            st.radio("조회 기간 설정",["일자","시간대","기간"])
+        with b2:
             bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)
             
 
-        with b2:
+        with b3:
             uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
             bt_reset = st.button("🔄  :blue[영역 재설정] ",use_container_width=True)
 
