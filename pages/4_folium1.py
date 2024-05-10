@@ -53,7 +53,7 @@ with st.expander("📝  사용법 보기"):
             st.write("4. 오른쪽 상단 :blue-background[Browse files] 눌러 다운받은 파일(*.geojson) 업로드")
             st.write("5. :blue-background[조회하기] 클릭")
             st.write("📢 영역을 다시 그리려면 :blue-background[영역재설정] 클릭 후 다시 진행")
-with st.container(height= 210,border=None):
+with st.container(height= 200,border=None):
     a1, a2 = st.columns([0.3,0.7])
     with a1:
         bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)
