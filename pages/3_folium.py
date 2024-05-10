@@ -94,6 +94,10 @@ else:
                     st.write(df_bs_poly)
                 else:
                     st.write("데이터가 없습니다.")
+        else:
+            with col1:
+                st.write("‼ GeoJson파일을 업로드 후 조회 해주세요.")
+                output = folium_static(m,width=1100, height=500)        
     else:
         with col1:
             output = folium_static(m,width=1100, height=500)
