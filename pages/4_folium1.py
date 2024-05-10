@@ -61,7 +61,6 @@ with t1:
         a1, a2 = st.columns([0.3,0.7])
         with a1:
             bt_search = st.button(label="🔎  :green[조  회  하  기]",use_container_width=True)
-            st.empty()
             bt_reset = st.button("🔄  :blue[영역 재설정] ",use_container_width=True)
 
         with a2:
