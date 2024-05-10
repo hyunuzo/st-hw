@@ -35,7 +35,7 @@ folium.plugins.Fullscreen(
     force_separate_button=True,
 ).add_to(m)
 
-m1 = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
+
 # st_map = folium_static(m, width = 1100, height=500)
 df_bs_poly = None
 
@@ -57,7 +57,7 @@ with col1:
                  st.write("1. 지도 왼편 다각형(⬟) or 사각형(■) 선택")
                  st.write("2. 원하는 영역 그리기")
                  st.write("3. 지도 오른편 :blue-background[Export] 눌러 파일 다운받기")
-                 st.write("4. 오른쪽 상단 :blue-background[Browse files] 눌러 다운 받은 파일 업로드")
+                 st.write("4. 오른쪽 상단 :blue-background[Browse files] 눌러 다운받은 파일(*.geojson) 업로드")
                  st.write("5. :blue-background[조회하기] 클릭")
                  st.write("📢 영역을 다시 그리려면 :blue-background[영역재설정] 클릭 후 다시 진행")
          with c2:
@@ -80,7 +80,9 @@ if bt_search:
             tooltip = f"정류장번호: {row['정류장번호']}"
             folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
     else:
-        st.write("goejson파일을 업로드해주세요.")
+        m1 = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
+        folium.plugins.Fullscreen(position="topright",title="전체화면",title_cancel="나가기",force_separate_button=True).add_to(m1)
+        st.write("파일을 업로드해주세요.")
     
 if bt_reset:
     with col1:
