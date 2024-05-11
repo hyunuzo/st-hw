@@ -89,8 +89,8 @@ with t1:
             with a2:
                 st.metric(label="수량",value=len(df_bs_poly))
                 st.metric(label="Metric_sample1",value= 80,delta="-3.5%")
-                st.metric(label="Metric_sample2",value= 76,delta="3.5%")
-                st.metric(label="Metric_sample3",value= 76,delta= str(len(df_bs_poly))+" 점")
+                st.metric(label="Metric_sample2",value= 4.5,delta="3.5%")
+                st.metric(label="Metric_sample3",value= 726,delta= str(len(df_bs_poly))+" 점")
             st.write("[RAW DATA]")
             st.dataframe(df_bs_poly)                    
         else:
