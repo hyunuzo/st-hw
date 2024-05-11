@@ -73,7 +73,7 @@ with t1:
     if bt_search:
         if uploaded_file is not None:
             gdf = gpd.read_file(uploaded_file)
-            location = [gdf['geometry'].centroid.y,gdf['geometry'].centroid.x]  # 폴리곤 중앙 좌표값    
+            location = [gdf['geometry'].centroid.y.mean(),gdf['geometry'].centroid.x.mean()]  # 폴리곤 중앙 좌표값    
             bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
             df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
             m1 = folium.Map(location=location, zoom_start=15)
