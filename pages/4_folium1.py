@@ -37,12 +37,6 @@ folium.plugins.Fullscreen(
     title_cancel="나가기",
     force_separate_button=True,
 ).add_to(m)
-for idx, row in gdf_bs.iterrows():
-                    popup = folium.Popup("<b>정류장명 : </b>" + f"{row['정류장명']}",max_width=300) # 마커 팝업에 표시할 정보 설정
-                    tooltip = f"정류장번호: {row['정류장번호']}"
-                    folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m)
-
-
 
 # st_map = folium_static(m, width = 1100, height=500)
 df_bs_poly = None
