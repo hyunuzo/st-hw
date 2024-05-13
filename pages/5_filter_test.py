@@ -25,6 +25,7 @@ select_gungu = st.selectbox('시군구 선택',gungu)
 
 a = df[['시도']== '부산'].unique()
 
+st.write("표시")
 st.write(a)
 
 st.write(df)
