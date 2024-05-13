@@ -10,7 +10,7 @@ import json
 import datetime
 
 path_csv = 'img/도로교통공단_일자별 시군구별 교통사고 건수_20221231.csv'
-df = pd.read_csv(path_csv)
+df = pd.read_csv(path_csv,encoding='ANSI')
 
 
 st.write(df.head(5))
