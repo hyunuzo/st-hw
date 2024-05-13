@@ -9,6 +9,8 @@ from shapely.geometry import Point
 import json
 import datetime
 
-path_csv = 'img/국토교통부_전국 버스정류장 위치정보1_20231016.csv'
-path_geo = 'img/s.geojson'
-bus_stop = pd.read_csv(path_csv)
+path_csv = 'img/도로교통공단_일자별 시군구별 교통사고 건수_20221231.csv'
+df = pd.read_csv(path_csv)
+
+
+st.write(df.head(5))
