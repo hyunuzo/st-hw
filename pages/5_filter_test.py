@@ -15,8 +15,16 @@ df = pd.read_csv(path_csv)
 sido = df['시도'].unique()
 gungu = df['시군구'].unique()
 
-select_sido = st.selectbox('시도 선택',sido)
-select_gungu = st.selectbox('시군구 선택',sido)
+def filter_select(select):
+    df[['시도']== select]
 
+
+
+select_sido = st.selectbox('시도 선택',sido)
+select_gungu = st.selectbox('시군구 선택',gungu)
+
+a = df[['시도']== '부산'].unique()
+
+st.write(a)
 
 st.write(df)
