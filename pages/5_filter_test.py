@@ -13,6 +13,11 @@ path_csv = 'img/도로교통공단_일자별 시군구별 교통사고 건수_20
 df = pd.read_csv(path_csv)
 
 sido = df['시도'].unique()
+gungu = df['시군구'].unique()
 
-st.selectbox('시도 선택',sido)
-st.write(df.head(5))
+
+select_sido = st.selectbox('시도 선택',sido)
+select_gungu = st.selectbox('시군구 선택',sido)
+
+
+st.write(df)
