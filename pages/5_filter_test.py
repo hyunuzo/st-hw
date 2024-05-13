@@ -13,7 +13,7 @@ import datetime
 path_csv = 'img/도로교통공단_일자별 시군구별 교통사고 건수_20221231.csv'
 df = pd.read_csv(path_csv)
 
-sido = df['시도'].unique().
+sido = df['시도'].unique()
 sido1 = sido.append('전국')
 gungu = df['시군구'].unique()
 a = df[df['시도']== '부산']['시군구'].unique()
