@@ -12,5 +12,7 @@ import datetime
 path_csv = 'img/도로교통공단_일자별 시군구별 교통사고 건수_20221231.csv'
 df = pd.read_csv(path_csv)
 
+sido = df['시도'].unique()
 
+st.selectbox('시도 선택',sido)
 st.write(df.head(5))
