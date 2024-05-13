@@ -20,9 +20,11 @@ def sido_gungu(data,select):
     filter_gungu = data[data['시도']== select]['시군구'].unique()
     return filter_gungu
 
-
-select_sido = st.selectbox('시도 선택',sido,index=None)
-select_gungu = st.selectbox('시군구 선택',sido_gungu(df,select_sido),index=None)
+col1, col2 = st.columns(2)
+with col1:
+    select_sido = st.selectbox('시도 선택',sido,index=None)
+with col2:
+    select_gungu = st.selectbox('시군구 선택',sido_gungu(df,select_sido),index=None)
 
 if select_sido is not None:
     if select_gungu is not None:
@@ -34,6 +36,5 @@ else:
         filter_df = df[df['시군구']== select_gungu]
     else:
         filter_df = df
-
 
 st.write(filter_df)
