@@ -25,4 +25,6 @@ select_sido = st.selectbox('시도 선택',sido)
 select_gungu = st.selectbox('시군구 선택',sido_gungu(df,select_sido))
 
 
+st.write(select_sido)
+st.write(select_gungu)
 st.write(df)
