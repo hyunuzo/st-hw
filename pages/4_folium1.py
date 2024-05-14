@@ -31,9 +31,9 @@ st.set_page_config(layout="wide")
 
 st.markdown("""
 <style>
-#map_2d831bfad6d4677b53118047b68748a4 {
-            width : 200%;
-            min-width: 1100px;
+            
+.folum-map {
+            width: 180%;
 }
 </style>
            """,unsafe_allow_html=True )
