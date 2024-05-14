@@ -24,4 +24,4 @@ Draw(export=True).add_to(m)
 #     st.write(st_folium(m, width=1000, height=500))
 st.write(st_folium(m, width=1000, height=500,returned_objects="last_active_drawing"))
 
-st.components.v1.html(m._repr_html_(), width='100%',height=500)
+st.components.v1.html(m._repr_html_(), width=1100,height=500)
