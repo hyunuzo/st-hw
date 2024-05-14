@@ -33,7 +33,7 @@ st.markdown("""
 <style>
             
 .folum-map leaflet-container div {
-            min-width: 100%;
+            min-width: 180%;
 }
 </style>
            """,unsafe_allow_html=True )
