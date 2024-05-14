@@ -29,17 +29,6 @@ geo_str = json.load(open(path_geo,encoding='utf-8'))
 
 st.set_page_config(layout="wide")
 
-st.markdown("""
-<style>
-            
-.folum-map {
-            width: 180%;
-}
-</style>
-           """,unsafe_allow_html=True )
-
-
-
 
 # 영역 그리는 지도
 m = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
@@ -79,7 +68,7 @@ with t1:
 
     if bt_reset:
         with a1:
-            output = folium_static(m,height=500)
+            output = folium_static(m,width=1100,height=500)
 
 
 # 조회하기 버튼 클릭시
@@ -99,7 +88,7 @@ with t1:
                     tooltip = f"정류장번호: {row['정류장번호']}"
                     folium.Circle(location=[row.geometry.y, row.geometry.x],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m1)
             with a1:
-                    st_m = folium_static(m1,height=500)
+                    st_m = folium_static(m1,width=1100,height=500)
             with a2:
                 st.metric(label="수량",value=len(df_bs_poly))
                 st.metric(label="Metric_sample1",value= 80,delta="-3.5%")
@@ -110,10 +99,10 @@ with t1:
         else:
             with a1:
                 st.subheader("⛔   :red[파일을 업로드한 후 조회 해주세요.]   ⛔")
-                output = folium_static(m,height=500)
+                output = folium_static(m,width=1100,height=500)
     else:
         with a1:
-            output = folium_static(m,height=500)
+            output = folium_static(m,width=1100,height=500)
 with t2:
     st.empty()
 
