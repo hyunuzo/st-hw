@@ -32,7 +32,7 @@ st.set_page_config(layout="wide")
 st.markdown("""
 <style>
             
-.folum-map leaflet-container div {
+.folum-map div {
             min-width: 180%;
 }
 </style>
