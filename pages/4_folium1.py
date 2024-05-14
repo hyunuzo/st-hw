@@ -33,7 +33,8 @@ st.markdown("""
 <style>
             
 .folum-map div {
-            min-width: 180%;
+            width : auto
+            min-width: 1100px;
 }
 </style>
            """,unsafe_allow_html=True )
