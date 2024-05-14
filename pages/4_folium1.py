@@ -31,9 +31,8 @@ st.set_page_config(layout="wide")
 
 st.markdown("""
 <style>
-            
 .folum-map div {
-            width : auto
+            width : 100%;
             min-width: 1100px;
 }
 </style>
