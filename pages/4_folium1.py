@@ -16,6 +16,8 @@ import datetime
 path_csv = 'img/국토교통부_전국 버스정류장 위치정보1_20231016.csv'
 path_geo = 'img/s.geojson'
 bus_stop = pd.read_csv(path_csv)
+
+# 위경도로 geometry 생성 후 GeoDataFrame으로 변환
 geometry = [Point(xy) for xy in zip(bus_stop['경도'],bus_stop['위도'])]
 gdf_bs = gpd.GeoDataFrame(bus_stop,geometry=geometry,crs='epsg:4326')
 gdf = gpd.read_file(path_geo)
@@ -32,11 +34,7 @@ m = folium.Map(location=[35.162943, 129.053097], zoom_start=11)
 Draw(export=True).add_to(m)
 # 지도 기능추가 (전체화면 기능)
 folium.plugins.Fullscreen(
-    position="topright",
-    title="전체화면",
-    title_cancel="나가기",
-    force_separate_button=True,
-).add_to(m)
+    position="topright", title="전체화면", title_cancel="나가기", force_separate_button=True).add_to(m)
 
 # st_map = folium_static(m, width = 1100, height=500)
 df_bs_poly = None
@@ -65,11 +63,15 @@ with t1:
         with b2:
             uploaded_file = st.file_uploader("다운 받은 파일(*.geojson)을 업로드해주세요.",type='geojson')
            
+# 영역재설정 버튼 클릭시
 
     if bt_reset:
         with a1:
             output = folium_static(m,width=1100,height=500)
-    
+
+
+# 조회하기 버튼 클릭시
+
     if bt_search:
         if uploaded_file is not None:
             gdf = gpd.read_file(uploaded_file)
