@@ -15,8 +15,8 @@ import datetime
 # 데이터 전처리
 path_csv = 'img/국토교통부_전국 버스정류장 위치정보1_20231016.csv'
 path_geo = 'img/s.geojson'
-bus_stop_raw = pd.read_csv(path_csv)
-bus_stop = bus_stop_raw.dropna(subset=['위도','경도']).head(1000)
+bus_stop = pd.read_csv(path_csv)
+bus_stop1 = bus_stop.dropna(subset=['위도','경도']).head(1000)
 
 # 위경도로 geometry 생성 후 GeoDataFrame으로 변환
 geometry = [Point(xy) for xy in zip(bus_stop['경도'],bus_stop['위도'])]
@@ -38,7 +38,7 @@ Draw(export=True).add_to(m)
 folium.plugins.Fullscreen(
     position="topright", title="전체화면", title_cancel="나가기", force_separate_button=True).add_to(m)
 
-for idx, row in bus_stop.iterrows():
+for idx, row in bus_stop1.iterrows():
                     popup = folium.Popup("<b>정류장명 : </b>" + f"{row['정류장명']}",max_width=300) # 마커 팝업에 표시할 정보 설정
                     tooltip = f"정류장번호: {row['정류장번호']}"
                     folium.Circle(location=[row['위도'], row['경도']],radius=10,fill=True,fill_opacity=0.8,popup=popup,tooltip=tooltip).add_to(m)
