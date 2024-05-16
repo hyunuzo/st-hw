@@ -16,7 +16,7 @@ import datetime
 path_csv = 'img/국토교통부_전국 버스정류장 위치정보1_20231016.csv'
 path_geo = 'img/s.geojson'
 bus_stop_raw = pd.read_csv(path_csv)
-bus_stop = bus_stop_raw.dropna(subset=['위도','경도'])
+bus_stop = bus_stop_raw.dropna(subset=['위도','경도']).head(1000)
 
 # 위경도로 geometry 생성 후 GeoDataFrame으로 변환
 geometry = [Point(xy) for xy in zip(bus_stop['경도'],bus_stop['위도'])]
