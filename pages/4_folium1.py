@@ -58,7 +58,7 @@ with t1:
         """
         <style>
         .stContainer > div {
-            width: 95%;
+            width: 1300px;
             margin: auto;
         }
         </style>
