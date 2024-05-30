@@ -91,7 +91,7 @@ with t1:
                     st_m = folium_static(m1,width=1100,height=500)
             with a2:
                 st.metric(label="수량",value=len(df_bs_poly))
-                st.metric(label="면적",value= gdf_area,delta="-3.5%")
+                st.metric(label="면적",value= str(round(gdf_area,2)) + "km²",delta="-3.5%")
                 st.metric(label="Metric_sample2",value= 4.5,delta="3.5%")
                 st.metric(label="Metric_sample3",value= 726,delta= str(len(df_bs_poly))+" 점")
             st.write("[RAW DATA]")
