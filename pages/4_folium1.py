@@ -75,7 +75,7 @@ with t1:
         if uploaded_file is not None:
             gdf = gpd.read_file(uploaded_file)
             a_gdf = gdf.to_crs(epsg=5179)
-            gdf_area = a_gdf['geometry'].area
+            gdf_area = a_gdf['geometry'].area / 1e6
             location = [gdf['geometry'].centroid.y.mean(),gdf['geometry'].centroid.x.mean()]  # 폴리곤 중앙 좌표값    
             bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
             df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
