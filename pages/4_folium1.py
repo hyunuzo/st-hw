@@ -92,7 +92,7 @@ with t1:
             with a2:
                 st.metric(label="수량",value=len(df_bs_poly))
                 st.metric(label="면적",value= round(gdf_area,2),delta="-3.5%")
-                st.metric(label="Metric_sample2",value= 4.5,delta="3.5%")
+                st.metric(label="예상 운집인원",value= round((gdf_area * 10) / 3.3) ,delta="3.5%")
                 st.metric(label="Metric_sample3",value= 726,delta= str(len(df_bs_poly))+" 점")
             st.write("[RAW DATA]")
             st.dataframe(df_bs_poly)                    
