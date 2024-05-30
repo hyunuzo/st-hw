@@ -54,17 +54,6 @@ with t1:
                 st.write("5. :blue-background[🔎 조회하기] 클릭")
                 st.write("📢 영역을 다시 그리려면 :blue-background[🔄영역 재설정] 클릭 후 다시 진행")
     with st.container(height= 550):
-        st.markdown(
-        """
-        <style>
-        .stContainer > div {
-            width: 1300px;
-            margin: auto;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-        )
         a1, a2 = st.columns([0.9,0.1])
             
     with st.container(height= 200,border=None):
@@ -77,9 +66,7 @@ with t1:
            
 # 영역재설정 버튼 클릭시
 
-    if bt_reset:
-        with a1:
-            output = folium_static(m,width=1100,height=500)
+    
 
 
 # 조회하기 버튼 클릭시
@@ -111,7 +98,7 @@ with t1:
             with a1:
                 st.subheader("⛔   :red[파일을 업로드한 후 조회 해주세요.]   ⛔")
                 output = folium_static(m,width=1100,height=500)
-    else:
+    if bt_reset:
         with a1:
             output = folium_static(m,width=1100,height=500)
 with t2:
