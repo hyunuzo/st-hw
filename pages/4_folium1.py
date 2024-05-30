@@ -101,6 +101,10 @@ with t1:
     if bt_reset:
         with a1:
             output = folium_static(m,width=1100,height=500)
+    else:
+        with a1:
+            output = folium_static(m,width=1100,height=500)
+
 with t2:
     st.empty()
 
