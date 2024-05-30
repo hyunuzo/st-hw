@@ -74,6 +74,8 @@ with t1:
     if bt_search:
         if uploaded_file is not None:
             gdf = gpd.read_file(uploaded_file)
+            a_gdf = gdf.to_crs(epsg=5179)
+            gdf_area = a_gdf['geometry'].area
             location = [gdf['geometry'].centroid.y.mean(),gdf['geometry'].centroid.x.mean()]  # 폴리곤 중앙 좌표값    
             bs_poly = gpd.sjoin(gdf_bs,gdf,how='inner')
             df_bs_poly = pd.DataFrame(bs_poly.drop(columns='geometry'))
@@ -89,7 +91,7 @@ with t1:
                     st_m = folium_static(m1,width=1100,height=500)
             with a2:
                 st.metric(label="수량",value=len(df_bs_poly))
-                st.metric(label="Metric_sample1",value= 80,delta="-3.5%")
+                st.metric(label="면적",value= gdf_area,delta="-3.5%")
                 st.metric(label="Metric_sample2",value= 4.5,delta="3.5%")
                 st.metric(label="Metric_sample3",value= 726,delta= str(len(df_bs_poly))+" 점")
             st.write("[RAW DATA]")
