@@ -10,31 +10,15 @@ from shapely.geometry import Point
 
 import datetime
 
-path_csv = 'img/도로교통공단_일자별 시군구별 교통사고 건수_20221231.csv'
-df = pd.read_csv(path_csv)
 
-sido = df['시도'].unique()
 
-def gungu(select):
-    gungu = df[df['시도']== select]['시군구'].unique()
-    return gungu
+import requests
 
-col1, col2 = st.columns(2)
-with col1:
-    select_sido = st.selectbox('시도 선택',sido,index=None)
-with col2:
-    select_gungu = st.selectbox('시군구 선택',gungu(select_sido),index=None)
+apikey = 'zxuuVVK8h9z9fvHU9kwZ5w'
+url = 'https://api.odsay.com/v1/api/loadLane'
+params ={'apiKey' : apikey,'lang':'1','mapObject':'0:0@2:2:-1:-1'}
+	
+response = requests.get(url, params=params)
 
-if select_sido is not None:
-    if select_gungu is not None:
-        filter_df = df[(df['시도']== select_sido)&(df['시군구']== select_gungu)]
-    else:
-        filter_df = df[df['시도']== select_sido]
-else:
-    if select_gungu is not None:
-        filter_df = df[df['시군구']== select_gungu]
-    else:
-        filter_df = df
 
-st.write(filter_df)
-st.write("test중")
+st.write(response.content)
