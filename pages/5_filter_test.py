@@ -10,15 +10,3 @@ from shapely.geometry import Point
 
 import datetime
 
-
-
-import requests
-
-apikey = 'zxuuVVK8h9z9fvHU9kwZ5w'
-url = 'https://api.odsay.com/v1/api/loadLane'
-params ={'apiKey' : apikey,'lang':'1','mapObject':'0:0@2:2:-1:-1'}
-	
-response = requests.get(url, params=params)
-
-
-st.write(response.content)
